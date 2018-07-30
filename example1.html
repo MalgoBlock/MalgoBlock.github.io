@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+
+<head>
+    <title>MB Example 1</title>
+    <script src="header.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="footer.js"></script>
+    <script src="example1.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="container">
+
+        <div id="body">
+            <div id="mainText">
+                <h2>Capturing user input</h2>
+                <br />
+                <p>Please fill the form below, your information will be displayed below the form when you submit it.</p>
+                <form>
+                    <fieldset>
+                        <legend>Personal info</legend>
+
+                        <label for="name">First name:
+                            <abbr title="This field is mandatory">*</abbr></label>
+                        <input type="text" id="name" class="valid"
+                               pattern="[A-Za-z\s]+"
+                               maxlength="15" value="Aa" required/><br />
+
+                        <label for="date">Date of birth:</label>
+                        <input type="date" id="date"  /><br />
+
+                        <input type="button" id="submit" value="Submit" />
+
+                    </fieldset>
+                </form>
+              
+
+    <p id="display">Your information will display here.</p>
+                    
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

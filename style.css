@@ -1,0 +1,128 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#container {
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+
+footer, header {
+    color: dimgray;
+    background-color: lightgray;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-height: 10%;
+}
+
+header {
+    min-height: 70px;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    min-height: 30px;
+    width: 100%;
+}
+
+a {
+    float: left;
+    padding: 10px;
+    display: inline-block;
+    color: dimgray;
+}
+
+
+#body {
+    width: 100%;
+    min-height: 80%;
+    overflow: hidden;
+    display: flex;
+}
+
+
+#mainText {
+    background-color: lightyellow;
+    padding-left: 20px;
+    padding-top: 10px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+#sidebar {
+    color: dimgray;
+    background-color: orange;
+    flex: 0 0 150px;
+    float: right;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+h2 {
+    color: rebeccapurple;
+    padding: 10px 20px;
+}
+
+p {
+    padding: 10px 20px;
+
+}
+
+/* example 1*/
+
+form {
+    padding: 20px;
+}
+
+legend {
+    background-color: darkslategray;
+    color: white;
+    padding: 5px;
+    border-color: orange;
+}
+
+fieldset {
+    background-color: lightgray;
+    width: 350px;
+}
+
+
+input {
+    margin: 10px;
+    padding-left: 10px;
+    width: 150px;
+    
+}
+
+label {
+    margin: 10px;
+    padding-left: 10px;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+#submit {
+    margin-left: 142px;
+    width: 164px;
+
+}
+
+input:invalid {
+    border-color: orange;
+}
