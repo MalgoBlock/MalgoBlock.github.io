@@ -17,28 +17,63 @@
             <div id="mainText">
                 <h2>Capturing user input</h2>
                 <br />
-                <p>Please fill the form below, your information will be displayed below the form when you submit it.</p>
+                <p>
+                    A simple restaurant booking form. <br />
+                    Information summary will be displayed below the form on submitting the form.
+                </p>
                 <form>
                     <fieldset>
-                        <legend>Personal info</legend>
+                        <legend>Table booking</legend>
 
-                        <label for="name">First name:
-                            <abbr title="This field is mandatory">*</abbr></label>
-                        <input type="text" id="name" class="valid"
+                        <p id="label">Gender:</p>
+                        <input type="radio" id="male" value="male" name="gender" />
+                        <label for="male" class="radioLabel">male</label>
+                        <input type="radio" id="female" value="female" name="gender" />
+                        <label for="female" class="radioLabel">female</label><br />
+
+                        <label for="name">Name:</label>
+                        <input type="text" id="name"
                                pattern="[A-Za-z\s]+"
-                               maxlength="15" value="Aa" required/><br />
+                               maxlength="15" value="Aa" /><br />
 
-                        <label for="date">Date of birth:</label>
-                        <input type="date" id="date"  /><br />
+                        <label for="date">
+                            Select date:
+                            <abbr title="This field is mandatory">*</abbr>
+                        </label>
+                        <input type="date" id="date" required /><br />
 
-                        <input type="button" id="submit" value="Submit" />
+                        <label for="mealSelect">Select meal:</label>
+                        <select id="mealSelect">
+                            <option value="">--Please select--</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                        </select>
+
+                        <input type="button" id="submit" class="formButton" value="Submit" />
+                        <input type="reset" class="formButton" value="Reset" />
 
                     </fieldset>
                 </form>
-              
 
-    <p id="display">Your information will display here.</p>
-                    
+
+                <table id="bookingChart">
+                    <thead>
+                        <tr id="bookingChartHead">
+                         <!--headers created through example1.js-->
+                        </tr>
+                    </thead>
+                    <tbody id="bookingChartBody">
+                        <!--cells created through example1.js-->
+                    </tbody>
+                </table>
+
+                <br />
+
+                <p id="display">Your information will display here.</p>
+
+                <br />
+
             </div>
         </div>
 

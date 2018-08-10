@@ -87,6 +87,7 @@ p {
 
 form {
     padding: 20px;
+    display: inline-block;
 }
 
 legend {
@@ -102,27 +103,60 @@ fieldset {
 }
 
 
-input {
+input, select {
     margin: 10px;
     padding-left: 10px;
     width: 150px;
     
 }
 
-label {
+label, #label {
     margin: 10px;
     padding-left: 10px;
+    padding-right: 0px;
     display: inline-block;
     width: 100px;
     text-align: right;
 }
 
-#submit {
+#male, #female {
+    margin-top: 25px;
+    margin-right: 0px;
+    width: 15px;
+}
+
+.radioLabel {
+    padding-left: 0px;
+    margin-left: 0px;
+    text-align: left;
+    width: 30px;
+}
+
+.formButton {
+    padding-left: 0px;
     margin-left: 142px;
     width: 164px;
-
 }
 
 input:invalid {
     border-color: orange;
+}
+
+table {
+
+    margin-left: 10px;
+    table-layout: fixed;
+    display: inline-block;
+    padding: 10px;
+    border-collapse: collapse;
+    border: solid orange;
+}
+
+th, tr, td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+th, td {
+    width: 60px;
 }
