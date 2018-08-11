@@ -15,11 +15,13 @@
 
         <div id="body">
             <div id="mainText">
-                <h2>Capturing user input</h2>
+                <h2>Restaurant booking form</h2>
+                <p>
+                    (An excercise in capturing user input and processing it) <br />
+                </p>
                 <br />
                 <p>
-                    A simple restaurant booking form. <br />
-                    Information summary will be displayed below the form on submitting the form.
+                    This tiny restaurant only offers one table and takes booking for a week ahead. Please fill the form below to request a booking.
                 </p>
                 <form>
                     <fieldset>
@@ -42,8 +44,11 @@
                         </label>
                         <input type="date" id="date" required /><br />
 
-                        <label for="mealSelect">Select meal:</label>
-                        <select id="mealSelect">
+                        <label for="mealSelect">
+                            Select meal:
+                            <abbr title="This field is mandatory">*</abbr>
+                        </label>
+                        <select id="mealSelect" required>
                             <option value="">--Please select--</option>
                             <option value="breakfast">Breakfast</option>
                             <option value="lunch">Lunch</option>
@@ -70,7 +75,7 @@
 
                 <br />
 
-                <p id="display">Your information will display here.</p>
+                <p id="display">Information summary will display here.</p>
 
                 <br />
 

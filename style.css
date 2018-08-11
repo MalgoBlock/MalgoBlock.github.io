@@ -152,11 +152,15 @@ table {
     border: solid orange;
 }
 
+thead {
+    font-size: 0.9em;
+}
+
 th, tr, td {
     padding: 10px;
     border: 1px solid black;
 }
 
 th, td {
-    width: 60px;
+    width: 70px;
 }

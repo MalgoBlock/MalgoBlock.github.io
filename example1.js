@@ -16,8 +16,6 @@ function readyGo() {
 
     createTable(); //create booking table
 
-
-
 }
 
 function createTable() {
@@ -33,7 +31,8 @@ function createTable() {
         var newDate = new Date();
         var k = j - 1;
         newDate.setDate(date.getDate() + k);
-        document.getElementById('bookingChart').rows[0].cells[j].innerHTML = returnDate(newDate);
+        var displayDate = returnDate(newDate); 
+        document.getElementById('bookingChart').rows[0].cells[j].innerHTML = displayDate;
     };
 
     var body = document.getElementById('bookingChartBody');
@@ -110,42 +109,44 @@ function onPress() {
         name_value = 'Customer';
     }
 
-    //check if a specific meal is selected
-    
-    if (mealSelect.value === '') {
-        meal = '';
-    } else {
-        meal = ' for ' + mealSelect.value
-    }
 
-    //check if date is provided (required):
-    if (date.validity.valid === true) {
+    //check if date is provided and meal is selected (both required):
+    if (date.validity.valid === true && mealSelect.validity.valid === true) {
         date_value = date.value;
+        meal = mealSelect.value;
         displayInformation();
-    } else {
+    } else if (date.validity.valid === true && mealSelect.validity.valid === false) {
+        alert('Please select a meal');
+    } else if (date.validity.valid === false && mealSelect.validity.valid === true) {
         alert('Please provide desired date');
+    } else {
+        alert('Please provide desired date and select a meal');
     }  
 
+
     function displayInformation() {
-        display.innerHTML = title + ' ' + name_value + ' requested booking' + meal + ' on: ' + date_value;
-        populateTable(name_value, date_value, meal);
+
+        var bookingDetails = title + ' ' + name_value + ' requested booking for ' + meal + ' on: ' + date_value; 
+
+        display.innerHTML = bookingDetails; 
+        
+        for (i = 1; i < 8; i++) {
+            var checkDate = document.getElementById('bookingChart').rows[0].cells[i].innerHTML;
+            var meals = ['breakfast', 'lunch', 'dinner'];
+
+            if (date_value === checkDate) {
+                for (j = 0; j < 3; j++) {
+                    if (meals[j] === meal) {
+                        if (document.getElementById('bookingChart').rows[j + 1].cells[i].innerHTML !== '') {
+                            alert('Unfortunately this slot is already taken. Please change your booking request.');
+                            display.innerHTML = bookingDetails + ' - unfortunately the booking has been rejected.';
+                        } else {
+                            document.getElementById('bookingChart').rows[j + 1].cells[i].innerHTML = name_value;
+                        }
+
+                    }
+                }
+            }
+        }
     }
 }
-
-function populateTable(name, date, meal) {
-    for (i = 1; i < 8; i++) {
-        var checkDate = document.getElementById('bookingChart').rows[0].cells[i].innerHTML;
-        var selectedMeal = meal.substring([5]);
-        var meals = ['breakfast', 'lunch', 'dinner'];
-        
-        if (date === checkDate) {
-            for (j = 0; j < 3; j++) {
-                if (meals[j] === selectedMeal) {
-                    document.getElementById('bookingChart').rows[j + 1].cells[i].innerHTML = name;   
-              }
-            } 
-          }
-        } 
-    }
-
-    
