@@ -5,14 +5,44 @@ function readyGo() {
     var submit = document.getElementById('submit');
     submit.addEventListener('click', onPress);
 
-    //set correct time constraint for date picker - from current date
-    var today = new Date();
-    var endDay = new Date();
-    var addDays = 6; // to set end day in 6 days time
-    endDay.setDate(today.getDate() + addDays);
+    //fall-back option for browsers not supporting date type
+    var typeCheck = document.getElementById('date');
 
-    document.getElementById('date').setAttribute('min', returnDate(today));
-    document.getElementById('date').setAttribute('max', returnDate(endDay));
+    if (typeCheck.type === 'date') {
+        setConstraint();
+    } else { //replace unsupported 'date' type with a drop down list of dates
+        var newSelect = document.createElement('select');
+        newSelect.id = 'date';
+        newSelect.required = true;
+        //add options
+        var defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.innerHTML = '--Please select--';
+        newSelect.appendChild(defaultOption);
+
+        for (i = 0; i < 7; i++) {
+            var option = document.createElement('option');
+            var date = new Date();
+            date.setDate(date.getDate() + i);
+            var displayDate = returnDate(date); 
+            option.value = displayDate;
+            option.innerHTML = displayDate;
+            newSelect.appendChild(option);
+        }
+
+        typeCheck.parentNode.replaceChild(newSelect, typeCheck);
+    }
+
+    //set correct time constraint for date picker - from current date
+    function setConstraint() {
+        var today = new Date();
+        var endDay = new Date();
+        var addDays = 6; // to set end day in 6 days time
+        endDay.setDate(today.getDate() + addDays);
+
+        document.getElementById('date').setAttribute('min', returnDate(today));
+        document.getElementById('date').setAttribute('max', returnDate(endDay));
+    }
 
     createTable(); //create booking table
 
@@ -83,24 +113,18 @@ function onPress() {
     var date = document.getElementById('date');
     var date_value;
     var display = document.getElementById('display');
-    var gender = document.getElementsByName('gender'); //returns array
-    var gender_value = '';
-    var title = '';
+    var menuType = document.getElementsByName('menuType'); //returns array
+    var menuType_value = '';
     var mealSelect = document.getElementById('mealSelect');
     var meal = '';
 
-    //establish gender (not required) and set title if gender provided:
-    for (var i = 0; i < gender.length; i++) {
-        if (gender[i].checked) {
-            gender_value = gender[i].value;
-        }
 
-        if (gender_value === 'male') {
-            title = 'Mr'
-        } else if (gender_value === 'female') {
-            title = 'Mrs'
+    //establish selected menu type (not required)
+    for (var i = 0; i < menuType.length; i++) {
+        if (menuType[i].checked) {
+            menuType_value = ' Customer requested ' + menuType[i].value + ' menu';
         }
-        } 
+    }
 
     //check if the name is provided (not required):
     name_value = name.value;
@@ -121,15 +145,15 @@ function onPress() {
         alert('Please provide desired date');
     } else {
         alert('Please provide desired date and select a meal');
-    }  
+    }
 
 
     function displayInformation() {
 
-        var bookingDetails = title + ' ' + name_value + ' requested booking for ' + meal + ' on: ' + date_value; 
+        var bookingDetails = name_value + ' requested booking for ' + meal + ' on: ' + date_value + '.' + menuType_value;
 
-        display.innerHTML = bookingDetails; 
-        
+        display.innerHTML = bookingDetails;
+
         for (i = 1; i < 8; i++) {
             var checkDate = document.getElementById('bookingChart').rows[0].cells[i].innerHTML;
             var meals = ['breakfast', 'lunch', 'dinner'];

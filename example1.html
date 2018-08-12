@@ -27,12 +27,6 @@
                     <fieldset>
                         <legend>Table booking</legend>
 
-                        <p id="label">Gender:</p>
-                        <input type="radio" id="male" value="male" name="gender" />
-                        <label for="male" class="radioLabel">male</label>
-                        <input type="radio" id="female" value="female" name="gender" />
-                        <label for="female" class="radioLabel">female</label><br />
-
                         <label for="name">Name:</label>
                         <input type="text" id="name"
                                pattern="[A-Za-z\s]+"
@@ -54,6 +48,12 @@
                             <option value="lunch">Lunch</option>
                             <option value="dinner">Dinner</option>
                         </select>
+
+                        <p id="label">Menu type:</p>
+                        <input type="radio" id="standard" value="standard" name="menuType" />
+                        <label for="standard" class="radioLabel">standard</label>
+                        <input type="radio" id="vegetarian" value="vegetarian" name="menuType" />
+                        <label for="vegetarian" class="radioLabel">vegetarian</label><br />
 
                         <input type="button" id="submit" class="formButton" value="Submit" />
                         <input type="reset" class="formButton" value="Reset" />
