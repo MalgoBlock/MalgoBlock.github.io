@@ -5,6 +5,8 @@ function readyGo() {
     var submit = document.getElementById('submit');
     submit.addEventListener('click', onPress);
 
+    var bookingChart = document.getElementById('bookingChart');
+
     //fall-back option for browsers not supporting date type
     var typeCheck = document.getElementById('date');
 
@@ -51,6 +53,7 @@ function readyGo() {
 function createTable() {
     var head = document.getElementById('bookingChartHead');
 
+
     for (var i = 0; i < 8; i++) {
         var heading = document.createElement('th');
         head.appendChild(heading);
@@ -62,7 +65,7 @@ function createTable() {
         var k = j - 1;
         newDate.setDate(date.getDate() + k);
         var displayDate = returnDate(newDate); 
-        document.getElementById('bookingChart').rows[0].cells[j].innerHTML = displayDate;
+        bookingChart.rows[0].cells[j].innerHTML = displayDate;
     };
 
     var body = document.getElementById('bookingChartBody');
@@ -83,6 +86,20 @@ function createTable() {
         }
 
         body.appendChild(row);
+
+    }
+
+
+    //check the time of the day to determine if bookings for breakfast and lunch can still be taken
+
+    var currentTime = date.getHours();
+
+    if (currentTime > 10) {
+        bookingChart.rows[1].cells[1].innerHTML = 'finished';
+    }
+
+    if (currentTime > 15) {
+        bookingChart.rows[1].cells[2].innerHTML = 'finished';
     }
 
 }
@@ -151,7 +168,6 @@ function onPress() {
     function displayInformation() {
 
         var bookingDetails = name_value + ' requested booking for ' + meal + ' on: ' + date_value + '.' + menuType_value;
-
         display.innerHTML = bookingDetails;
 
         for (i = 1; i < 8; i++) {
@@ -161,11 +177,20 @@ function onPress() {
             if (date_value === checkDate) {
                 for (j = 0; j < 3; j++) {
                     if (meals[j] === meal) {
-                        if (document.getElementById('bookingChart').rows[j + 1].cells[i].innerHTML !== '') {
+                        if (bookingChart.rows[j + 1].cells[i].innerHTML === '') {
+
+                            bookingChart.rows[j + 1].cells[i].innerHTML = name_value;
+
+                        } else if (i === 1 && bookingChart.rows[j + 1].cells[i].innerHTML === 'finished') {
+
+                            alert('Unfortunately the meal you are wanting to book is already finished for today. Please change your booking request.');
+                            display.innerHTML = bookingDetails + ' - unfortunately the booking has been rejected.';
+
+                        } else {
+
                             alert('Unfortunately this slot is already taken. Please change your booking request.');
                             display.innerHTML = bookingDetails + ' - unfortunately the booking has been rejected.';
-                        } else {
-                            document.getElementById('bookingChart').rows[j + 1].cells[i].innerHTML = name_value;
+
                         }
 
                     }
