@@ -14,16 +14,16 @@ function onLoadHeader() {
 
  
     var main = document.createElement('a')
-    main.innerHTML = "Main"
+    main.innerHTML = "Intro"
     main.href = "./index.html";
  
 
     var example1 = document.createElement('a')
-    example1.innerHTML = "Example 1"
+    example1.innerHTML = "Booking form"
     example1.href = "./example1.html";
 
     var example2 = document.createElement('a')
-    example2.innerHTML = "Example 2"
+    example2.innerHTML = "Ordering form"
     example2.href = "./example2.html";
    
 
