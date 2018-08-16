@@ -20,7 +20,7 @@ html, body {
 
 
 footer, header {
-    color: dimgray;
+    color: #472000;
     background-color: lightgray;
     text-align: center;
     padding-top: 10px;
@@ -43,9 +43,8 @@ a {
     float: left;
     padding: 10px;
     display: inline-block;
-    color: dimgray;
+    color: #472000;
 }
-
 
 #body {
     width: 100%;
@@ -56,7 +55,7 @@ a {
 
 
 #mainText {
-    background-color: lightyellow;
+    background-color: #FFDFC5;
     padding-left: 20px;
     padding-top: 10px;
     flex-grow: 1;
@@ -64,9 +63,9 @@ a {
 }
 
 #sidebar {
-    color: dimgray;
-    background-color: orange;
-    flex: 0 0 150px;
+    color: #472000;
+    background-color: #FA9A4B;
+    flex: 0 0 100px;
     float: right;
     text-align: center;
     padding-top: 10px;
@@ -74,7 +73,7 @@ a {
 
 
 h2 {
-    color: rebeccapurple;
+    color: #472000;
     padding: 10px 20px;
 }
 
@@ -91,14 +90,14 @@ form {
 }
 
 legend {
-    background-color: darkslategray;
+    background-color: #974400;
     color: white;
     padding: 5px;
-    border-color: orange;
+    border-color: #ED7C1E;
 }
 
 fieldset {
-    background-color: lightgray;
+    background-color: #FA9A4B;
     width: 350px;
 }
 
@@ -139,7 +138,7 @@ label, #label {
 }
 
 input:invalid {
-    border-color: orange;
+    border-color: #ED7C1E;
 }
 
 table {
@@ -149,7 +148,7 @@ table {
     display: inline-block;
     padding: 10px;
     border-collapse: collapse;
-    border: solid orange;
+    border: solid #ED7C1E;
 }
 
 thead {
@@ -164,3 +163,53 @@ th, tr, td {
 th, td {
     width: 70px;
 }
+
+/* example 2 */
+
+#gridContainer {
+    margin: 10px;
+    display: grid;
+    width: 100%;
+    background-color: #FFDFC5;
+    grid-template: 100px 1fr / 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+#cakeText {
+    background-color: #733FBF;
+    color: #AF8DE3; 
+    grid-column: 1 / 5;
+}
+
+.cake {
+    color: #AF8DE3;
+}
+
+#cakeSelector {
+    background-color: #AF8DE3;
+    grid-column: 1 / 3;
+}
+
+#cakeList {
+    
+    margin-right: 10px;
+}
+
+.cakeList {
+    width: 100%;
+    border: hidden;
+}
+
+#cakeDisplay {
+    background-color: floralwhite;
+}
+
+#cakeOrder {
+    background-color: #AF8DE3;
+}
+
+
+
+
+/* Palette URL: http://paletton.com/#uid=10u0u0kr+tLhoC8mpvkuqnZzhiX */
+/* Palette URL: http://paletton.com/#uid=30V0I0kntBVdnQ0iVIDsxxovGqj */

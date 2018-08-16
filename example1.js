@@ -99,7 +99,7 @@ function createTable() {
     }
 
     if (currentTime > 15) {
-        bookingChart.rows[1].cells[2].innerHTML = 'finished';
+        bookingChart.rows[2].cells[1].innerHTML = 'finished';
     }
 
 }

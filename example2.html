@@ -2,10 +2,11 @@
 
 
 <head>
-    <title>MB Example 2</title>
+    <title>Cake shop</title>
     <script src="header.js"></script>
     <script src="sidebar.js"></script>
     <script src="footer.js"></script>
+    <script src="example2.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet" />
 
 </head>
@@ -13,10 +14,31 @@
     <div id="container">
 
         <div id="body">
-            <div id="mainText">
-                <p>This is going to be another example one day..</p>
+            <div id="gridContainer">
+
+                <div id="cakeText">
+                    <h2 class="cake">Cake shop</h2>
+                    <p>Cake ordering page.</p>
+                </div>
+
+                <div id="cakeSelector">
+                    <p>Select your cake here</p>
+                    <table id="cakeList">
+                        <!--table created through example.js-->
+                    </table>
+
+                </div>
+
+                <div id="cakeDisplay">
+                    <p>Your order will be displayed here</p> <br />
+                    <p id="orderDetails"></p>
+                </div>
+
+                <div id="cakeOrder">
+                    <p>Order summary will display here</p>
+                    <div id="orderSummary"></div>
+                </div>
             </div>
-        </div>
 
     </div>
 
