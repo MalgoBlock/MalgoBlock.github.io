@@ -113,7 +113,7 @@ function onPressAdd(event) {
 
     // order details
 
-    if (amountWhole != '0' || amountPiece != '0') {
+    if (amountWhole > '0' || amountPiece > '0') {
         addToOrder(cakeType, amountWhole, amountPiece);
     } else {
         alert('Please select desired quantity.')
