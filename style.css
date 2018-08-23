@@ -185,17 +185,17 @@ th, td {
 
 #cakeSelector {
     background-color: #AF8DE3;
-    width: 50%;
+    width: 33%;
 }
 
 #cakeDisplay {
     background-color: floralwhite;
-    width: 25%;
+    width: 33%;
 }
 
 #cakeOrder {
     background-color: #AF8DE3;
-    width: 25%;
+    width: 33%;
 }
 
 
@@ -244,13 +244,19 @@ th, td {
     margin-right: 10px;
 }
 
-.cakeList, .cakeList input {
-    width: unset;
+.cakeList {
+    width: auto;
     border: hidden;
 }
 
+.cakeList input {
+    width: 50px;
+}
+
+
+
 .cakeQuantity {
-   width: unset;
+    width: unset;
     border: hidden;
 }
 

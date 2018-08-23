@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', readyGo, false);
 var currentOrder = [];
 var cakeSelection = ['Blueberry cheesecake', 'Chocolate torte', 'Lemon tart', 'Pumpkin pie'];
 var cakeColors = ['#582A72', '#802B15', '#FEA11D', '#F07D16'];
+var maximumCake = '96';
+var cakeAlert = 'The maximum order of any type of cake is 96 pieces or 16 whole cakes. Please adjust your quantity.';
 
 function readyGo() {
     createCakeTable();
@@ -113,8 +115,15 @@ function onPressAdd(event) {
 
     // order details
 
-    if (amountWhole > '0' || amountPiece > '0') {
-        addToOrder(cakeType, amountWhole, amountPiece);
+    if ((amountWhole >= '0' && amountPiece >= '0') && (amountWhole != '0' || amountPiece != '0')) {
+        var totalOrder = (parseInt(amountWhole, 10) * 6) + parseInt(amountPiece, 10);
+
+        if (totalOrder > maximumCake) {
+            alert(cakeAlert);
+        } else {
+            addToOrder(cakeType, amountWhole, amountPiece);
+        }
+        
     } else {
         alert('Please select desired quantity.')
     }
@@ -138,27 +147,36 @@ function addToOrder(cake, quantityWhole, quantityPiece) {
 
         for (var i = 0; i < currentOrder.length; i++) {
             if (currentOrder[i].name === cake) { // if cake type already on the list then add quantity
+                
                 // cake pieces
                 var currentQuantityPiece = parseInt(currentOrder[i].quantityPiece, 10);
                 var addedQuantityPiece = parseInt(quantityPiece, 10);
-
-                // check if adding pieces will result in a whole cake
                 var newQuantity = currentQuantityPiece + addedQuantityPiece;
-                var newWholeCake = 0;
-
-                if (newQuantity > 5) {
-                    newWholeCake = 1;
-                    newQuantity = newQuantity - 6; //this can be 0
-                }
-
-                currentOrder[i].quantityPiece = newQuantity;
-
                 // whole cakes
                 var currentQuantityWhole = parseInt(currentOrder[i].quantityWhole, 10);
                 var addedQuantityWhole = parseInt(quantityWhole, 10);
-                var newQuantityWhole = currentQuantityWhole + addedQuantityWhole + newWholeCake;
 
-                currentOrder[i].quantityWhole = newQuantityWhole;
+                var newTotalAmount = newQuantity + ((currentQuantityWhole + addedQuantityWhole) * 6);
+
+                //check if adding more cake will result in going over maximum cake limit
+
+                if (newTotalAmount > maximumCake) {
+                    alert(cakeAlert);
+                } else {
+                    // check if adding pieces will result in a whole cake
+                    var newWholeCake = 0;
+
+                    if (newQuantity > 5) {
+                        newWholeCake = 1;
+                        newQuantity = newQuantity - 6; //this can be 0
+                    }
+
+                    currentOrder[i].quantityPiece = newQuantity;
+
+                    // add whole cakes
+                    var newQuantityWhole = currentQuantityWhole + addedQuantityWhole + newWholeCake;
+                    currentOrder[i].quantityWhole = newQuantityWhole;
+                }
 
             } else { // if cake not on the list add 1 to the counter
 
@@ -310,13 +328,13 @@ function displayOrder(currentOrder, totalCake) { //currentOrder is an array cont
 }
 
 function clearCanvas() {
-    //var cakeDisplay = document.getElementById('cakeDisplay');
+    var cakeDisplay = document.getElementById('cakeDisplay');
     var canvasNumber = document.getElementsByClassName('cakeCharts'); //returns array
     var iterate = canvasNumber.length;
 
     for (i = 0; i < iterate; i++) {
         var canvasId = 'cakeChart' + i;
         var removeCanvas = document.getElementById(canvasId);
-        removeCanvas.remove();
+        cakeDisplay.removeChild(removeCanvas); // using .removeChild as IE doesn't support .remove
     }
 }
