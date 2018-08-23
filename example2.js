@@ -7,6 +7,8 @@ var cakeAlert = 'The maximum order of any type of cake is 96 pieces or 16 whole 
 
 function readyGo() {
     createCakeTable();
+    var clearOrder = document.getElementById('clearOrder');
+    clearOrder.addEventListener('click', onPressClear);
 }
 
 function createCakeTable() {
@@ -337,4 +339,10 @@ function clearCanvas() {
         var removeCanvas = document.getElementById(canvasId);
         cakeDisplay.removeChild(removeCanvas); // using .removeChild as IE doesn't support .remove
     }
+}
+
+function onPressClear() {
+    currentOrder = [];
+    clearCanvas();
+    document.getElementById('orderSummary').innerHTML = '';
 }

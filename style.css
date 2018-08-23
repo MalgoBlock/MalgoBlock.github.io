@@ -229,6 +229,11 @@ th, td {
     }
 }
 
+#clearOrder {
+    margin: 10px 20px;
+    padding: 5px;
+}
+
 #cakeText {
     background-color: #733FBF;
     color: #AF8DE3; 
