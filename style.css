@@ -265,7 +265,72 @@ th, td {
     border: hidden;
 }
 
-
-
 /* Palette URL: http://paletton.com/#uid=10u0u0kr+tLhoC8mpvkuqnZzhiX */
 /* Palette URL: http://paletton.com/#uid=30V0I0kntBVdnQ0iVIDsxxovGqj */
+
+/*example 3*/
+
+p.colorPicker {
+    margin-top: 70px;
+    margin-left: 10px;
+    padding: 10px 10px;
+    width: auto;
+    display: inline-block;
+}
+
+canvas.colorPicker {
+    margin-left: 15px;
+}
+
+p.gameField {
+    width: 20px;
+    padding: 0px 10px;
+    margin: 0px;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+#winner {
+    width: 400px;
+    color: white;
+}
+
+.gameRow {
+    height: 50px;
+    display: table;
+    width: 100%;
+}
+
+.gameRow button {
+    vertical-align: top;
+    margin: 15px 20px;
+}
+
+#solution {
+    background-color: purple;
+    min-width: 800px;
+}
+
+#colorPicker {
+    background-color: grey;
+}
+
+#gameBoard {
+    background-color: grey;
+    min-width: 800px;
+}
+
+    @supports (grid-area: auto) {
+        #grid {
+            display: grid;
+            grid-template: 50px 1fr / 70px 1fr;
+            grid-gap: 10px;
+            height: 100%;
+        }
+
+        #colorPicker {
+            grid-column: 1;
+            grid-row: 1 / 3;
+        }
+    }
+

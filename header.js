@@ -25,9 +25,13 @@ function onLoadHeader() {
     var example2 = document.createElement('a')
     example2.innerHTML = "Ordering form"
     example2.href = "./example2.html";
-   
+
+    var example3 = document.createElement('a')
+    example3.innerHTML = "Mastermind"
+    example3.href = "./example3.html";
 
     header.appendChild(main);
     header.appendChild(example1);
     header.appendChild(example2);
+    header.appendChild(example3);
 }
