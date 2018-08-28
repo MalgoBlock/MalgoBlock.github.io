@@ -1,0 +1,81 @@
+﻿#mainText {
+    background-color: #FFDFC5;
+}
+
+form {
+    padding: 20px;
+    display: inline-block;
+}
+
+legend {
+    background-color: #974400;
+    color: white;
+    padding: 5px;
+    border-color: #ED7C1E;
+}
+
+fieldset {
+    background-color: #FA9A4B;
+    width: 350px;
+}
+
+
+input, select {
+    margin: 10px;
+    padding-left: 10px;
+    width: 150px;
+}
+
+label, #label {
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 0px;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+#standard, #vegetarian {
+    margin-top: 25px;
+    margin-right: 0px;
+    width: 15px;
+}
+
+.radioLabel {
+    padding-left: 0px;
+    margin-left: 0px;
+    text-align: left;
+    width: 50px;
+}
+
+.formButton {
+    padding-left: 0px;
+    margin-left: 142px;
+    width: 164px;
+}
+
+input:invalid {
+    border-color: #ED7C1E;
+}
+
+table {
+    margin-left: 10px;
+    table-layout: fixed;
+    display: inline-block;
+    padding: 10px;
+    border-collapse: collapse;
+    border: solid #ED7C1E;
+}
+
+thead {
+    font-size: 0.9em;
+}
+
+th, tr, td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+th, td {
+    width: 70px;
+}

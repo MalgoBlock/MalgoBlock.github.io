@@ -28,8 +28,21 @@ function drawElements() {
         newPicker.addEventListener('click', pickColor);
     }
 
-    // create game board
+    var newGame = document.getElementById('newGame');
+    newGame.addEventListener('click', startNewGame);
+
+    createGameBoard();
+
+    setActiveRow('row1');
+
+
+    
+}
+
+function createGameBoard() {
     var board = document.getElementById('gameBoard');
+    var wrap1 = document.createElement('div');
+    wrap1.id = 'wrap1';
 
     for (k = 12; k > 0; k--) {
         var newRow = document.createElement('div');
@@ -42,25 +55,27 @@ function drawElements() {
         rowNr.innerHTML = k;
         rowNr.className = 'gameField';
 
- 
+
         newRow.appendChild(rowNr);
-        board.appendChild(newRow);
-    
-    for (j = 0; j < 6; j++) {
-        var newField = document.createElement('canvas');
-        newField.width = 40;
-        newField.height = 40;
-        newField.id = newRow.id + 'field' + j;
-        newField.className = 'gameField';
+        wrap1.appendChild(newRow);
+        board.appendChild(wrap1);
 
-        drawCircle(newField, 40, 15);
+        for (j = 0; j < 6; j++) {
+            var newField = document.createElement('canvas');
+            newField.width = 40;
+            newField.height = 40;
+            newField.id = newRow.id + 'field' + j;
+            newField.className = 'gameField';
 
-        newRow.appendChild(newField);
+            drawCircle(newField, 40, 15);
+
+            newRow.appendChild(newField);
         }
-        
+
         var button = document.createElement('button');
         button.innerHTML = 'check';
         button.id = newRow.id + 'button';
+        button.disabled = true;
         newRow.appendChild(button);
 
         for (l = 0; l < 6; l++) {
@@ -76,13 +91,14 @@ function drawElements() {
         }
     } 
 
-    setActiveRow('row1');
-
     var solution = document.getElementById('solution');
+    var wrap2 = document.createElement('wrap2');
     var emptyP = document.createElement('p');
     emptyP.innerHTML = '00';
     emptyP.className = 'gameField';
-    solution.appendChild(emptyP);
+    wrap2.id = 'wrap2';
+    wrap2.appendChild(emptyP);
+    solution.appendChild(wrap2);
 
     for (m = 0; m < 6; m++) {
         var solutionField = document.createElement('canvas');
@@ -92,25 +108,25 @@ function drawElements() {
         solutionField.className = 'gameField';
 
         drawCircle(solutionField, 40, 15);
-        solution.appendChild(solutionField);
+        wrap2.appendChild(solutionField);
     }
 
     var button2 = document.createElement('button');
     button2.innerHTML = 'reveal';
     button2.id = 'reveal';
-    solution.appendChild(button2);
+    wrap2.appendChild(button2);
     button2.addEventListener('click', revealSolution);
-    
+
 }
 
 function createActiveSolution() {
+    activeSolution = [];
+
     for (i = 0; i < 6; i++) {
         var number = Math.floor(Math.random() * 6);
         var color = colorList[number];
         activeSolution.push(color);
     }
-
-    console.log(activeSolution);
 }
 
 
@@ -158,6 +174,7 @@ function setActiveRow(rowId) {
     }
 
     var button = document.getElementById(rowId + 'button');
+    button.disabled = false;
     button.addEventListener('click', checkRow);
    
 }
@@ -248,14 +265,28 @@ function checkRow() {
             var row = document.getElementById(activeRow);
             row.style.backgroundColor = 'purple';
 
-            var solutionRow = document.getElementById('solution');
+            var solutionRow = document.getElementById('wrap2');
 
             var message = document.createElement('p');
-            message.innerHTML = 'Congratulation, you have found a correct solution!';
+            message.innerHTML = 'Congratulations, you have found a correct solution!';
             message.className = 'gameField';
             message.id = 'winner';
 
-            solution.appendChild(message);
+            solutionRow.appendChild(message);
+            revealSolution();
+
+        } else if (activeRow == 'row12') {
+
+            deactivateRow();
+
+            var solutionRow = document.getElementById('wrap2');
+
+            var message = document.createElement('p');
+            message.innerHTML = 'Sorry, no more attempts are available';
+            message.className = 'gameField';
+            message.id = 'loser';
+
+            solutionRow.appendChild(message);
             revealSolution();
 
         } else {
@@ -283,6 +314,7 @@ function deactivateRow() {
 
     var button = document.getElementById(activeRow + 'button');
     button.removeEventListener('click', checkRow);
+    button.disabled = true; 
 }
 
 function revealSolution() {
@@ -291,4 +323,20 @@ function revealSolution() {
         var target = document.getElementById(targetId);
         drawFilledCircle(target, activeSolution[i], 40, 15);
     }
+}
+
+function startNewGame() {
+    createActiveSolution();
+    
+    var board = document.getElementById('gameBoard');
+    var wrap1 = document.getElementById('wrap1');
+    board.removeChild(wrap1);
+
+
+    var solution = document.getElementById('solution');
+    var wrap2 = document.getElementById('wrap2');
+    solution.removeChild(wrap2);
+
+    createGameBoard();
+    setActiveRow('row1');
 }

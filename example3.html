@@ -8,6 +8,8 @@
     <script src="footer.js"></script>
     <script src="example3.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet" />
+    <link href="example3.css" type="text/css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -19,10 +21,23 @@
                       
                     </div>
                     <div id="colorPicker" class="mastermind">
-                        <p class="colorPicker">Pick your color:</p>
+                        <button class="colorPicker" id="newGame">New game</button>
+                        <p class="colorPicker">Pick your colors:</p>
                     </div>
                     <div id="gameBoard" class="mastermind">
                         
+                    </div>
+                    <div class="sideText">
+                        <p>
+                            The aim of this game is to guess a sequence of six colors. <br />
+                            You have 12 attempts to guess the sequence, starting at the row 1 at the bottom of the screen. <br />
+                            After each attempt clues are displayed to aid the guessing: black for a right color in a right position and white for a right color in incorrect position. <br />
+                            If you decide to stop the game you can reveal the solution at the top of the board. <br /> <br />
+                        </p>
+                        <p>
+                            This game is based on a 1970s Mastermind game designed by Mordecai Meirowitz. <br />
+                            For more details see <a href="https://en.wikipedia.org/wiki/Mastermind_(board_game)" target ="_blank">Wikipedia page about Mastermind</a>.
+                        </p>
                     </div>
                 </div>
                 

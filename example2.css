@@ -1,0 +1,99 @@
+﻿#gridContainer {
+    margin: 10px;
+    width: 100%;
+    background-color: #FFDFC5;
+    height: 100%;
+    overflow: scroll;
+}
+
+
+#cakeWrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#cakeSelector {
+    background-color: #AF8DE3;
+    width: 33%;
+}
+
+#cakeDisplay {
+    background-color: floralwhite;
+    width: 33%;
+}
+
+#cakeOrder {
+    background-color: #AF8DE3;
+    width: 33%;
+}
+
+
+@supports (grid-area: auto) {
+
+    #gridContainer {
+        display: grid;
+        grid-template-rows: 100px 1fr;
+        height: auto;
+    }
+
+    #cakeWrapper {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        height: auto;
+    }
+
+    #cakeSelector {
+        width: 100%;
+    }
+
+    #cakeDisplay {
+        width: auto;
+    }
+
+    #cakeOrder {
+        width: auto;
+    }
+}
+
+#clearOrder {
+    margin: 10px 20px;
+    padding: 5px;
+}
+
+#cakeText {
+    background-color: #733FBF;
+    color: #AF8DE3;
+}
+
+.cake {
+    color: #AF8DE3;
+}
+
+
+
+#cakeList {
+    margin-right: 10px;
+}
+
+.cakeList {
+    width: auto;
+    border: hidden;
+}
+
+    .cakeList input {
+        width: 50px;
+    }
+
+
+
+.cakeQuantity {
+    width: unset;
+    border: hidden;
+}
+
+/* Palette URL: http://paletton.com/#uid=10u0u0kr+tLhoC8mpvkuqnZzhiX */
+/* Palette URL: http://paletton.com/#uid=30V0I0kntBVdnQ0iVIDsxxovGqj */
