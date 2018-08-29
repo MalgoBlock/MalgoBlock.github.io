@@ -84,3 +84,34 @@ p {
 
 }
 
+#messageBox {
+    position: fixed;
+    display: block;
+    z-index: 1;
+    left: 40%;
+    top: 40%;
+    background-color: orange;
+    border: 5px double grey;
+    width: 350px;
+    height: 100px;
+}
+
+#messageBox span {
+    color: grey;
+    font-size: 2em;
+    font-weight: bold;
+    float: right;
+    padding: 5px;
+}
+
+#messageBox p {
+    margin: 5% auto;
+    width: 30 0px;
+    color: darkslategrey;
+}
+
+#closeButton:hover, 
+#closeButton:focus {
+    color: black;
+    cursor: pointer;
+}

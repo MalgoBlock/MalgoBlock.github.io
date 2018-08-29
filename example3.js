@@ -299,7 +299,7 @@ function checkRow() {
         }
 
     } else {
-        alert('Please fill all the fields');
+        displayMessage('Please fill all the fields');
     }
 }
 

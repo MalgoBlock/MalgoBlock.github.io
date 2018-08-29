@@ -121,13 +121,13 @@ function onPressAdd(event) {
         var totalOrder = (parseInt(amountWhole, 10) * 6) + parseInt(amountPiece, 10);
 
         if (totalOrder > maximumCake) {
-            alert(cakeAlert);
+            displayMessage(cakeAlert);
         } else {
             addToOrder(cakeType, amountWhole, amountPiece);
         }
         
     } else {
-        alert('Please select desired quantity.')
+        displayMessage('Please select desired quantity.')
     }
     
 }
@@ -163,7 +163,7 @@ function addToOrder(cake, quantityWhole, quantityPiece) {
                 //check if adding more cake will result in going over maximum cake limit
 
                 if (newTotalAmount > maximumCake) {
-                    alert(cakeAlert);
+                    displayMessage(cakeAlert);
                 } else {
                     // check if adding pieces will result in a whole cake
                     var newWholeCake = 0;
@@ -279,12 +279,6 @@ function displayOrder(currentOrder, totalCake) { //currentOrder is an array cont
     if (remainder != '0') {
         remainingAmount += 1;
     }
-    /*
-    var dividedPieces = [];
-    for (l = 0; l < remainingAmount; l++) {
-        var shortList = [];
-
-    }*/
 
     for (k = 0; k < remainingAmount; k++) {
         var start = k * 6;

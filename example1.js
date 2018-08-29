@@ -157,11 +157,11 @@ function onPress() {
         meal = mealSelect.value;
         displayInformation();
     } else if (date.validity.valid === true && mealSelect.validity.valid === false) {
-        alert('Please select a meal');
+        displayMessage('Please select a meal');
     } else if (date.validity.valid === false && mealSelect.validity.valid === true) {
-        alert('Please provide desired date');
+        displayMessage('Please provide desired date');
     } else {
-        alert('Please provide desired date and select a meal');
+        displayMessage('Please provide desired date and select a meal');
     }
 
 
@@ -183,12 +183,12 @@ function onPress() {
 
                         } else if (i === 1 && bookingChart.rows[j + 1].cells[i].innerHTML === 'finished') {
 
-                            alert('Unfortunately the meal you are wanting to book is already finished for today. Please change your booking request.');
+                            displayMessage('Unfortunately the meal you are wanting to book is already finished for today. Please change your booking request.');
                             display.innerHTML = bookingDetails + ' - unfortunately the booking has been rejected.';
 
                         } else {
 
-                            alert('Unfortunately this slot is already taken. Please change your booking request.');
+                            displayMessage('Unfortunately this slot is already taken. Please change your booking request.');
                             display.innerHTML = bookingDetails + ' - unfortunately the booking has been rejected.';
 
                         }
