@@ -128,12 +128,13 @@ function startNewGame() {
     currentBomb = 0;
     countClues = 0;
     difficulty = 4;
+    seconds = 100;
     createBombs();
     armBomb(currentBomb);
     armBomb(1);
     armBomb(2);
     armBomb(3);
-    seconds = 100;
+    clearInterval(countdownId);
     countdown();
 }
 
@@ -162,6 +163,7 @@ function countdown() {
                 text.innerHTML = seconds;
             } else {
                 blowUp('Time is up!!!');
+                clearInterval(countdownId);
                 text.style.color = 'forestgreen';
             }
         }
@@ -382,6 +384,7 @@ function snapWire(event) {
         }
     } else {
         blowUp('Wrong wire!!!');
+        clearInterval(countdownId);
     } 
 }
 
@@ -418,7 +421,7 @@ function blowUp(text) {
         wire.removeEventListener('click', snapWire);
     }
 
-    clearInterval(countdownId);
+    
 
     for (x = 0; x < 4; x++) {
         var lock = document.getElementById('lock' + x);
