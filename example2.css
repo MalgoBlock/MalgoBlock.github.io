@@ -73,26 +73,25 @@
     color: #AF8DE3;
 }
 
-
-
 #cakeList {
-    margin-right: 10px;
+    margin-left: 10px;
+    border: 5px double rebeccapurple;
 }
 
 .cakeList {
     width: auto;
     border: hidden;
+    padding: 5px;
 }
 
-    .cakeList input {
-        width: 50px;
-    }
-
-
+.cakeList input {
+    width: 75px;
+}
 
 .cakeQuantity {
     width: unset;
     border: hidden;
+    padding: 5px;
 }
 
 /* Palette URL: http://paletton.com/#uid=10u0u0kr+tLhoC8mpvkuqnZzhiX */
