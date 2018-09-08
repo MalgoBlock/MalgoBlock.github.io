@@ -127,13 +127,13 @@ function startNewGame() {
     resetBoard();
     currentBomb = 0;
     countClues = 0;
+    difficulty = 4;
     createBombs();
     armBomb(currentBomb);
     armBomb(1);
     armBomb(2);
     armBomb(3);
     seconds = 100;
-    difficulty = 4;
     countdown();
 }
 
