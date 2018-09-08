@@ -1,0 +1,197 @@
+﻿#mainText {
+    background-color: lightgrey;
+}
+
+#gameArea {
+    position: relative;
+    max-width: 1600px;
+    min-width: 850px;
+}
+
+#topPanel {
+    width: 100%;
+    height: 100px;
+    background-color: dimgrey;
+}
+
+.instructions i {
+    font-size: 1.1em;
+    padding-left: 10px;
+}
+
+.instructions {
+    background-color: forestgreen;
+    color: white;
+    font-size: 1.2em;
+    width: 100%;
+}
+
+#instructionsText {
+    height: 0px;
+    transition-property: height;
+    transition-duration: 2s;
+}
+
+.yellow {
+    color: yellow;
+}
+
+#message {
+    display: inline-block;
+    color: white;
+    font-size: 1.4em;
+    animation: move 3s linear 1s infinite alternate;
+    transition-property: font-size;
+    transition-duration: 2s;
+}
+
+@keyframes move {
+    from { margin-left: 0px;}
+    to {margin-left: 100px;}
+}
+
+#timer {
+    display: inline-block;
+    font-size: 2em;
+    color: forestgreen;
+    padding: 30px;
+    float: right;
+    transition-property: color;
+    transition-duration: 10s;
+}
+
+.button {
+    margin: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    color: forestgreen;
+}
+
+.wrapper {
+    margin: 20px;
+    width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: darkred;
+    position: relative;
+    transition-property: background-color;
+    transition-duration: 2s;
+}
+
+.bomb {
+    margin: 25px;
+    width: 300px;
+    height: 200px;
+    background-color: darkgrey;
+    display: inline-block;
+}
+
+@supports (grid-area: auto) {
+    .bomb {
+        display: grid;
+        grid-template: 50px 75px 50px 25px / repeat(6, 50px);
+    }
+}
+
+.dice {
+    font-size: 2em;
+    padding: 5px 10px;
+    color: dimgrey;
+    float: left;
+}
+
+.wire {
+    width: 5px;
+    height: 75px;
+    background-color: red;
+    margin-left: 22px;
+    margin-right: 21px;
+    transition-property: height;
+    transition-duration: 0.5s;
+    float: left;
+}
+
+.wireHidden {
+    width: 5px;
+    height: 75px;
+    background-color: darkgrey;
+    float: left;
+    margin-left: 22px;
+    margin-right: 22px;
+}
+
+.arrow {
+    font-size: 2em;
+    color: lightgrey;
+    margin-left: 15px;
+    float: left;
+}
+
+.door {
+    top: 25px;
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    z-index: 1;
+    background-color: darkgrey;
+    border: 2px solid black;
+    box-sizing: border-box;
+    transition-property: width;
+    transition-duration: 3s;
+}
+
+
+.doorLeft {
+    left: 25px;
+}
+
+.doorRight {
+    right: 25px;
+}
+
+.lock {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    z-index: 2;
+    position: absolute;
+    top: 100px;
+    left: 150px;
+    background-color: darkred;
+    font-size: 2.5em;
+}
+
+.lock i {
+    margin: 5px;
+    margin-left: 8px;
+}
+
+.clue {
+    width: 200px;
+    height: 0px;
+    background-color: palegoldenrod;
+    position: absolute;
+    top: 225px;
+    left: 25px;
+    transition-property: height;
+    transition-duration: 2s;
+}
+
+.clue p {
+        padding: 2px;
+        margin-left: 10px;
+}
+
+.explosion {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: 1em;
+    color: yellow;
+    transition-property: font-size, color, left;
+    transition-duration: 2s, 2s, 2s;
+    z-index: 1;
+}
+

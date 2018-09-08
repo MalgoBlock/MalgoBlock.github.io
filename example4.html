@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+
+<head>
+    <title>Bomb disposal</title>
+    <script src="header.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="footer.js"></script>
+    <script src="example4.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <link href="example4.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="body">
+            <div id="mainText">
+                <div id="gameArea">
+                    <div id="topPanel">
+                        <button id="start" class="button">New game</button>
+                        <p id="message">Keep going until you manage to disarm all four bombs!</p>
+                        <p id="timer">0</p>
+                    </div>
+                    <div id="instructionsLabel" class="instructions">
+                        <p>Instructions <i id="down" class="fas fa-caret-down"></i>   <i id="up" class="fas fa-caret-up"></i></p>
+                    </div>
+                    <div id="instructionsText" class="instructions">
+                        <p id="gameRules" hidden>
+                            The purpose of the game is to disarm all four bombs before the 100 seconds time runs out.<br />
+                            Press 'New game' button to start the timer and to unlock the first bomb.
+                            To open the bomb press <i class="fas fa-lock-open"></i>, the next bomb will get unlocked when you disarm the first one.<br />
+                            To disarm the bomb you have to follow the clues. To access each clue you need to press <i class="fas fa-caret-down yellow"></i> at the bottom edge of the bomb which will display the clue. <br />
+                            After you successfully cut the first wire, the clue arrow will turn green and if the bomb is not yet disarmed the next arrow will light up yellow.<br />
+                            Each clue consist of the position of the wire (e.g. 'Second') and a number. The number is the sum or the multiplication of the numbers on the dice connected by the wire. The multiplication is marked by a *. The position describes which wire counting from the left with the corresponding result is the one to cut.<br />
+                            To cut the wire simply click on it.<br />
+                            You win the game if you disarm all four bombs within the time limit.<br />
+                            If you cut incorrect wire or run our of time the bombs will explode and you lose the game.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

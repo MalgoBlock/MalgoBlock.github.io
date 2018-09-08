@@ -19,19 +19,28 @@ function onLoadHeader() {
  
 
     var example1 = document.createElement('a')
-    example1.innerHTML = "Booking form"
+    example1.innerHTML = "Booking form";
+    example1.id = 'menuBooking';
     example1.href = "./example1.html";
 
     var example2 = document.createElement('a')
-    example2.innerHTML = "Ordering form"
+    example2.innerHTML = "Ordering form";
+    example2.id = 'menuOrdering';
     example2.href = "./example2.html";
 
     var example3 = document.createElement('a')
-    example3.innerHTML = "Mastermind"
+    example3.innerHTML = "Mastermind";
+    example3.id = 'menuMastermind';
     example3.href = "./example3.html";
+
+    var example4 = document.createElement('a')
+    example4.innerHTML = "Bomb disposal";
+    example4.id = 'menuBomb';
+    example4.href = "./example4.html";
 
     header.appendChild(main);
     header.appendChild(example1);
     header.appendChild(example2);
     header.appendChild(example3);
+    header.appendChild(example4);
 }

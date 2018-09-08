@@ -106,7 +106,7 @@ p {
 
 #messageBox p {
     margin: 5% auto;
-    width: 30 0px;
+    width: 300px;
     color: darkslategrey;
 }
 
@@ -114,4 +114,20 @@ p {
 #closeButton:focus {
     color: black;
     cursor: pointer;
+}
+
+#menuBooking {
+    color: #ED7C1E;
+}
+
+#menuOrdering {
+    color: rebeccapurple;
+}
+
+#menuMastermind {
+    color: purple;
+}
+
+#menuBomb {
+    color: forestgreen;
 }
