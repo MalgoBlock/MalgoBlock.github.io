@@ -41,9 +41,22 @@
     display: inline-block;
     color: white;
     font-size: 1.4em;
-    animation: move 3s linear 1s infinite alternate;
     transition-property: font-size;
     transition-duration: 2s;
+    animation: none;
+}
+
+@media screen and (min-width: 1300px) {
+    #message {
+        animation: move 3s linear 1s infinite alternate;
+        
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    #topPanel {
+        height: 150px;
+    }
 }
 
 @keyframes move {
@@ -55,8 +68,7 @@
     display: inline-block;
     font-size: 2em;
     color: forestgreen;
-    padding: 30px;
-    float: right;
+    
     transition-property: color;
     transition-duration: 10s;
 }
