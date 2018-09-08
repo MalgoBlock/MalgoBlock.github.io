@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', readyGo, false);
 
 function readyGo() {
 
+    var menu = document.getElementById('menuBooking');
+    menu.style.fontWeight = 'bold';
+
     var submit = document.getElementById('submit');
     submit.addEventListener('click', onPress);
 

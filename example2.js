@@ -6,6 +6,10 @@ var maximumCake = '96';
 var cakeAlert = 'The maximum order of any type of cake is 96 pieces or 16 whole cakes. Please adjust your quantity.';
 
 function readyGo() {
+
+    var menu = document.getElementById('menuOrdering');
+    menu.style.fontWeight = 'bold';
+
     createCakeTable();
     var clearOrder = document.getElementById('clearOrder');
     clearOrder.addEventListener('click', onPressClear);

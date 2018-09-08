@@ -7,6 +7,9 @@ var inactiveRowColor = 'grey';
 var activeSolution = [];
 
 function readyGo() {
+    var menu = document.getElementById('menuMastermind');
+    menu.style.fontWeight = 'bold';
+
     drawElements();
     createActiveSolution();
 }
