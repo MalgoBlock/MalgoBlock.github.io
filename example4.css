@@ -1,5 +1,6 @@
 ﻿#mainText {
     background-color: lightgrey;
+    font-family: Courier New, Courier, monospace;
 }
 
 #gameArea {
@@ -22,7 +23,7 @@
 .instructions {
     background-color: forestgreen;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     width: 100%;
 }
 
@@ -66,6 +67,7 @@
     border-radius: 10px;
     background-color: white;
     color: forestgreen;
+    font-weight: bold;
 }
 
 .wrapper {

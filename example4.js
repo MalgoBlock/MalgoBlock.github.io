@@ -133,6 +133,7 @@ function startNewGame() {
     armBomb(2);
     armBomb(3);
     seconds = 100;
+    difficulty = 4;
     countdown();
 }
 
