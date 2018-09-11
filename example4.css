@@ -209,3 +209,12 @@
     z-index: 1;
 }
 
+#bottomPanel {
+    background-color: dimgrey;
+    width: 100%;
+}
+
+.bestScores {
+    color: forestgreen;
+    font-weight: bold;
+}

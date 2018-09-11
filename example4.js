@@ -4,10 +4,16 @@ var diceTop = [0, 0, 0, 0, 0, 0];
 var diceBottom = [0, 0, 0, 0, 0, 0];
 var correctWires = []; //different numbers between 0 and difficulty level (2 to 6) min. 1, max.3
 var difficulty = 4;
+var difficultyScore = 0;
 var currentBomb = 0;
 var countClues = 0; // which wire is to be cut
 var seconds = 100;
 var countdownId = 0;
+var tickingSound = new Audio('audio/335905__littlerainyseasons__ticking.mp3'); // mp3 source https://freesound.org/s/335905/
+tickingSound.loop = true;
+var explosionSound = new Audio('audio/89596__cgeffex__mudstick-explosion1.mp3') // mp3 source https://freesound.org/s/89596/
+var topScores = [];
+var currentScore = 0;
 
 function readyGo() {
     var menu = document.getElementById('menuBomb');
@@ -44,6 +50,7 @@ function panelDown() {
 
 function createBombs() {
     var gameArea = document.getElementById('gameArea');
+    var bottomPanel = document.getElementById('bottomPanel');
 
     for (i = 0; i < 4; i++) {
         var wrapper = document.createElement('div');
@@ -71,8 +78,9 @@ function createBombs() {
         wrapper.appendChild(lock);
         wrapper.appendChild(doorLeft);
         wrapper.appendChild(doorRight);
-        
-        gameArea.appendChild(wrapper);
+
+        gameArea.insertBefore(wrapper, bottomPanel);
+
     }
 
 }
@@ -125,9 +133,11 @@ function displayClue(event) {
 
 function startNewGame() {
     resetBoard();
+    tickingSound.pause();
     currentBomb = 0;
     countClues = 0;
     difficulty = 4;
+    difficultyScore = 0;
     seconds = 100;
     createBombs();
     armBomb(currentBomb);
@@ -142,6 +152,7 @@ function countdown() {
     var text = document.getElementById('timer');
     text.innerHTML = seconds;
     text.style.color = 'red';
+    
     tick();
 
     function tick() {
@@ -152,6 +163,7 @@ function countdown() {
 
         function start() {
             countdownId = setInterval(count, 1000);
+            tickingSound.play();
         }
 
         function count() {
@@ -164,6 +176,7 @@ function countdown() {
             } else {
                 blowUp('Time is up!!!');
                 clearInterval(countdownId);
+                tickingSound.pause();
                 text.style.color = 'forestgreen';
             }
         }
@@ -389,20 +402,22 @@ function snapWire(event) {
 }
 
 function nextBomb() {
+    difficultyScore += (difficulty * 2);
+
     if (currentBomb == 3) {
-        message('Congratulations! You have won!', 'forestgreen', '2em');
+        getScore();
+        message('Congratulations! You have won! Your score is ' + currentScore, 'forestgreen', '2em');
         clearInterval(countdownId);
-        
+        tickingSound.pause();
     } else {
         currentBomb += 1;
         countClues = 0;
-
-        if ((currentBomb == 1 && seconds >= 75) || (currentBomb == 2 && seconds >= 50) || (currentBomb == 3 && seconds >= 25)) {
+        
+        if ((currentBomb == 1 && seconds >= 75) || (currentBomb == 2 && seconds >= 50) || (currentBomb == 3 && seconds >= 25 && difficulty != 6)) {
             difficulty += 1;
         } else {
             difficulty -= 1;
         }
-
         var wrapperId = 'wrapper' + currentBomb;
         var bombId = 'bomb' + currentBomb;
 
@@ -412,6 +427,51 @@ function nextBomb() {
         wrapper.removeChild(bombToGo);
         armBomb(currentBomb);
     }
+}
+
+function getScore() {
+    currentScore = difficultyScore + seconds;
+    var addedScore = false;
+
+    if (topScores.length == 0) {
+        topScores.push(currentScore); //first item
+        addedScore = true;
+    } else {
+        for (i = 0; i < topScores.length; i++) {
+            if (topScores[i] <= currentScore) {
+                topScores.splice(i, 0, currentScore);
+                addedScore = true;
+                break;
+            }
+        }   
+    }
+
+    if (addedScore == false) {
+        topScores.push(currentScore); //last item
+    }
+
+    if (topScores.length > 5) {
+        topScores.splice(5, 0);
+    }
+
+    var bottomPanel = document.getElementById('bottomPanel');
+    var resultsToGo = document.getElementById('resultsWrap');
+    bottomPanel.removeChild(resultsToGo);
+
+    var newWrap = document.createElement('div');
+    newWrap.id = 'resultsWrap';
+    bottomPanel.appendChild(newWrap);
+
+    console.log(topScores);
+
+    for (j = 0; j < topScores.length; j++) {
+        var resultLine = document.createElement('p');
+        resultLine.className = 'bestScores';
+        var position = j + 1;
+        resultLine.innerHTML = position + '. ' + topScores[j];
+        newWrap.appendChild(resultLine);
+    }
+
 }
 
 function blowUp(text) {
@@ -427,7 +487,9 @@ function blowUp(text) {
         var lock = document.getElementById('lock' + x);
         lock.hidden = true;
     }
-    
+
+    tickingSound.pause();
+    explosionSound.play();
     message('Game over!!! ' + text, 'red', '2em');
     explode('50%', '35%', '20em');
     explode('30%', '40%', '10em');
