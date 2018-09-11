@@ -194,8 +194,8 @@
 }
 
 .clue p {
-        padding: 2px;
-        margin-left: 10px;
+    padding: 2px;
+    margin-left: 10px;
 }
 
 .explosion {
@@ -215,6 +215,14 @@
 }
 
 .bestScores {
-    color: forestgreen;
-    font-weight: bold;
+    color: white;
+    font-size: 1.2em;
+}
+
+#reset {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-bottom: 10px;
 }

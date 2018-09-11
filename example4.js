@@ -28,7 +28,15 @@ function readyGo() {
     var down = document.getElementById('down');
     down.addEventListener('click', panelDown);
 
+    var reset = document.getElementById('reset');
+    reset.addEventListener('click', resetScores);
+
     createBombs();
+
+    topScores = JSON.parse(localStorage.getItem('topScores')) || [];
+    if (topScores.length != 0) {
+        displayScore();
+    }
 }
 
 function panelUp() {
@@ -315,8 +323,6 @@ function armBomb(id) {
             }
         }
 
-        
-
         for (n = 0; n < correctWires.length; n++) {
             var clue = document.createElement('div');
             clue.id = 'clue' + id + n;
@@ -341,7 +347,6 @@ function armBomb(id) {
                 clueText = order[orderCount] + ' ' + currentResult + '*';
             }
             
-
             var newP = document.createElement('p');
             newP.innerHTML = clueText;
             newP.id = 'clueText' + id + n;
@@ -349,10 +354,8 @@ function armBomb(id) {
 
             clue.appendChild(newP);
             wrapper.appendChild(clue);
-    }
-
-    }
-      
+     }
+    }     
 }
 
 function snapWire(event) {
@@ -431,47 +434,64 @@ function nextBomb() {
 
 function getScore() {
     currentScore = difficultyScore + seconds;
-    var addedScore = false;
+    
+    if (topScores.constructor != Array) { //only happens when 1 score was saved in the local storage
+        var firstValue = topScores;
+        topScores = [];
+        topScores.push(firstValue);
+    }
 
+    var addedScore = false;
     if (topScores.length == 0) {
         topScores.push(currentScore); //first item
         addedScore = true;
     } else {
         for (i = 0; i < topScores.length; i++) {
-            if (topScores[i] <= currentScore) {
-                topScores.splice(i, 0, currentScore);
-                addedScore = true;
-                break;
+        if (topScores[i] <= currentScore) {
+            topScores.splice(i, 0, currentScore);
+            addedScore = true;
+            break;
             }
         }   
-    }
+         
+     if (addedScore == false) {
+            topScores.push(currentScore); //last item
+            }
+  
+     if (topScores.length > 5) { //only keep top 5 scores
+            topScores.splice(5, 0);
+            }
+        }
+    
+    localStorage.setItem('topScores', JSON.stringify(topScores));
 
-    if (addedScore == false) {
-        topScores.push(currentScore); //last item
-    }
+    displayScore();
+}
 
-    if (topScores.length > 5) {
-        topScores.splice(5, 0);
-    }
-
+function displayScore() {
     var bottomPanel = document.getElementById('bottomPanel');
     var resultsToGo = document.getElementById('resultsWrap');
+    var button = document.getElementById('reset');
     bottomPanel.removeChild(resultsToGo);
 
     var newWrap = document.createElement('div');
     newWrap.id = 'resultsWrap';
-    bottomPanel.appendChild(newWrap);
+    bottomPanel.insertBefore(newWrap, button);
 
-    console.log(topScores);
-
-    for (j = 0; j < topScores.length; j++) {
+    if (topScores.constructor === Array) {
+        for (j = 0; j < topScores.length; j++) {
+            var resultLine = document.createElement('p');
+            resultLine.className = 'bestScores';
+            var position = j + 1;
+            resultLine.innerHTML = position + '. ' + topScores[j];
+            newWrap.appendChild(resultLine);
+        }
+    } else { //else it is a number
         var resultLine = document.createElement('p');
         resultLine.className = 'bestScores';
-        var position = j + 1;
-        resultLine.innerHTML = position + '. ' + topScores[j];
+        resultLine.innerHTML = '1. ' + topScores;
         newWrap.appendChild(resultLine);
     }
-
 }
 
 function blowUp(text) {
@@ -480,8 +500,6 @@ function blowUp(text) {
         var wire = document.getElementById(wireNr);
         wire.removeEventListener('click', snapWire);
     }
-
-    
 
     for (x = 0; x < 4; x++) {
         var lock = document.getElementById('lock' + x);
@@ -530,4 +548,11 @@ function explode(start, finish, size) {
         gameArea.removeChild(explosion);
     }, 5000);
 
+}
+
+function resetScores() {
+    localStorage.removeItem('topScores');
+    topScores = [];
+
+    displayScore();
 }
