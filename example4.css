@@ -1,4 +1,8 @@
-﻿#mainText {
+﻿header {
+    color: #D00000;
+}
+
+#mainText {
     background-color: lightgrey;
     font-family: Courier New, Courier, monospace;
     border: 1px solid black;

@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', readyGo, false);
+
+//global variables
 var diceList = ['fas fa-square', 'fas fa-dice-one', 'fas fa-dice-two', 'fas fa-dice-three', 'fas fa-dice-four', 'fas fa-dice-five', 'fas fa-dice-six'];
 var diceTop = [0, 0, 0, 0, 0, 0];
 var diceBottom = [0, 0, 0, 0, 0, 0];
@@ -19,17 +21,13 @@ function readyGo() {
     var menu = document.getElementById('menuBomb');
     menu.style.fontWeight = 'bold';
 
-    var start = document.getElementById('start');
-    start.addEventListener('click', startNewGame);
+    var footer = document.getElementById('footerText');
+    footer.innerHTML = 'by Malgo Block - September 2018';
 
-    var up = document.getElementById('up');
-    up.addEventListener('click', panelUp);
-
-    var down = document.getElementById('down');
-    down.addEventListener('click', panelDown);
-
-    var reset = document.getElementById('reset');
-    reset.addEventListener('click', resetScores);
+    clickListener('start', startNewGame);
+    clickListener('up', panelMove('up'));
+    clickListener('down', panelMove('down'));
+    clickListener('reset', resetScores);
 
     createBombs();
 
@@ -39,21 +37,22 @@ function readyGo() {
     }
 }
 
-function panelUp() {
+function panelMove(direction) {
+    return function () { //closure scope required to enable passing arguments through event listener
     var panel = document.getElementById('instructionsText');
     var rules = document.getElementById('gameRules');
 
-    panel.style.height = '0px';
-    rules.hidden = true;
-}
-
-function panelDown() {
-    var panel = document.getElementById('instructionsText');
-    var rules = document.getElementById('gameRules');
-
-    panel.style.height = 'auto';
-    rules.hidden = false;
-
+    switch (direction) {
+        case 'up':
+            panel.style.height = '0px';
+            rules.hidden = true;
+            break;
+        case 'down':
+            panel.style.height = 'auto';
+            rules.hidden = false;
+            break;
+        }
+    }
 }
 
 function createBombs() {
@@ -61,26 +60,16 @@ function createBombs() {
     var bottomPanel = document.getElementById('bottomPanel');
 
     for (i = 0; i < 4; i++) {
-        var wrapper = document.createElement('div');
-        wrapper.className = 'wrapper';
-        wrapper.id = 'wrapper' + i;
+
+        var wrapper = createNewElement('div', 'wrapper' + i, 'wrapper');
 
         //create doors
-        var doorLeft = document.createElement('div');
-        doorLeft.className = 'door doorLeft';
-        doorLeft.id = 'doorLeft' + i;
-
-        var doorRight = document.createElement('div');
-        doorRight.className = 'door doorRight';
-        doorRight.id = 'doorRight' + i;
+        var doorLeft = createNewElement('div', 'doorLeft' + i, 'door doorLeft');
+        var doorRight = createNewElement('div', 'doorRight' + i, 'door doorRight');
 
         //create door lock
-        var lock = document.createElement('div');
-        lock.id = 'lock' + i;
-        lock.className = 'lock';
-        var newLock = document.createElement('i');
-        newLock.id = 'lockIcon' + i;
-        newLock.className = 'fas fa-lock';
+        var lock = createNewElement('div', 'lock' + i, 'lock');
+        var newLock = createNewElement('i', 'lockIcon' + i, 'fas fa-lock');
 
         lock.appendChild(newLock);
         wrapper.appendChild(lock);
@@ -88,13 +77,10 @@ function createBombs() {
         wrapper.appendChild(doorRight);
 
         gameArea.insertBefore(wrapper, bottomPanel);
-
     }
-
 }
 
-function dice(number, row) {
-   
+function dice(number, row) {  
     var newDice = document.createElement('i');
     var nameId = row[number];
     newDice.className = diceList[nameId];
@@ -160,8 +146,7 @@ function startNewGame() {
 function countdown() {
     var text = document.getElementById('timer');
     text.innerHTML = seconds;
-    text.style.color = 'red';
-    
+    text.style.color = 'red'; 
     tick();
 
     function tick() {
@@ -190,7 +175,6 @@ function countdown() {
             }
         }
     }
-
 }
 
 function resetBoard() {
@@ -220,7 +204,7 @@ function armBomb(id) {
 
     //create bomb 
     var diceNumber = difficulty;
-    diceTop = [0, 0, 0, 0, 0, 0];
+    diceTop = [0, 0, 0, 0, 0, 0]; // resets array if not a first game
     diceBottom = [0, 0, 0, 0, 0, 0];
 
     for (i = 0; i < diceNumber; i++) {
@@ -233,39 +217,32 @@ function armBomb(id) {
     
     var wrapperId = 'wrapper' + id;
     var wrapper = document.getElementById(wrapperId);
-    var newBomb = document.createElement('div');
-    newBomb.id = 'bomb' + id;
-    newBomb.className = 'bomb';
+
+    var newBomb = createNewElement('div', 'bomb' + id, 'bomb');
 
     //create first row of dice
     for (j = 0; j < 6; j++) {
-        var newCube = document.createElement('div');
-        newCube.id = 'cube' + id + j;
-        newCube.className = 'dice';
+        var newCube = createNewElement('div', 'cube' + id + j, 'dice');
         var newDice = dice(j, diceTop);
         newCube.appendChild(newDice);
         newBomb.appendChild(newCube);
     }
     //create wires
     for (k = 0; k < 6; k++) {
-        var newWire = document.createElement('div');
-        newWire.id = 'wire' + id + k;
-        newWire.className = 'wire';
+        var newWire = createNewElement('div', 'wire' + id + k, 'wire');
+
         if (k >= diceNumber) {
             newWire.className = 'wireHidden';
         } else {
             newWire.addEventListener('click', snapWire);
         }
-
         newBomb.appendChild(newWire);
     }
 
     //create second row of dice
     for (l = 0; l < 6; l++) {
-        var newCube = document.createElement('div');
         var idNumber = l + 6;
-        newCube.id = 'cube' + id + idNumber;
-        newCube.className = 'dice';
+        var newCube = createNewElement('div', 'cube' + id + idNumber, 'dice');
         var newDice = dice(l, diceBottom);
         newCube.appendChild(newDice);
         newBomb.appendChild(newCube);
@@ -273,11 +250,8 @@ function armBomb(id) {
 
     //create arrows
     for (m = 0; m < 3; m++) {
-        var newArrow = document.createElement('div');
-        newArrow.id = 'arrow' + id + m;
-        newArrow.className = 'arrow';
-        var newI = document.createElement('i');
-        newI.className = 'fas fa-caret-down';
+        var newArrow = createNewElement('div', 'arrow' + id + m, 'arrow');
+        var newI = createNewElement('i', 'arrow' + m, 'fas fa-caret-down');
         newArrow.appendChild(newI);
         newBomb.appendChild(newArrow);
     }
@@ -325,9 +299,7 @@ function armBomb(id) {
         }
 
         for (n = 0; n < correctWires.length; n++) {
-            var clue = document.createElement('div');
-            clue.id = 'clue' + id + n;
-            clue.className = 'clue';
+            var clue = createNewElement('div', 'clue' + id + n, 'clue');
 
             var position = correctWires[n];
             var currentResult = results[position];
@@ -366,7 +338,6 @@ function snapWire(event) {
     var resultId = wireId.slice(5);
    
      //check if the wire is correct;
-
     if (resultId == correctWires[countClues] || difficulty == 1) {
         wire.style.height = '15px';
         wire.style.backgroundColor = 'cadetblue';
@@ -406,7 +377,7 @@ function snapWire(event) {
 }
 
 function nextBomb() {
-    difficultyScore += (difficulty * 2);
+    difficultyScore += (difficulty * 3);
 
     if (currentBomb == 3) {
         getScore();
@@ -419,9 +390,10 @@ function nextBomb() {
         
         if ((currentBomb == 1 && seconds >= 75) || (currentBomb == 2 && seconds >= 50) || (currentBomb == 3 && seconds >= 25 && difficulty != 6)) {
             difficulty += 1;
-        } else {
+        } else if (difficulty != 1) {
             difficulty -= 1;
         }
+
         var wrapperId = 'wrapper' + currentBomb;
         var bombId = 'bomb' + currentBomb;
 
@@ -465,7 +437,6 @@ function getScore() {
         }
     
     localStorage.setItem('topScores', JSON.stringify(topScores));
-
     displayScore();
 }
 
@@ -475,21 +446,18 @@ function displayScore() {
     var button = document.getElementById('reset');
     bottomPanel.removeChild(resultsToGo);
 
-    var newWrap = document.createElement('div');
-    newWrap.id = 'resultsWrap';
+    var newWrap = createNewElement('div', 'resultsWrap', 'resultsWrap');
     bottomPanel.insertBefore(newWrap, button);
 
     if (topScores.constructor === Array) {
         for (j = 0; j < topScores.length; j++) {
-            var resultLine = document.createElement('p');
-            resultLine.className = 'bestScores';
+            var resultLine = createNewElement('p', 'bestScores', 'bestScores');
             var position = j + 1;
             resultLine.innerHTML = position + '. ' + topScores[j];
             newWrap.appendChild(resultLine);
         }
     } else { //else it is a number
-        var resultLine = document.createElement('p');
-        resultLine.className = 'bestScores';
+        var resultLine = createNewElement('p', 'bestScores', 'bestScores');
         resultLine.innerHTML = '1. ' + topScores;
         newWrap.appendChild(resultLine);
     }
@@ -510,12 +478,8 @@ function blowUp(text) {
     tickingSound.pause();
     explosionSound.play();
     message('Game over!!! ' + text, 'red', '2em');
-    explode('50%', '35%', '20em');
-    explode('30%', '40%', '10em');
-    explode('40%', '20%', '15em');
-    explode('45%', '30%', '12em');
-    explode('20%', '45%', '18em');
-    explode('35%', '15%', '5em');
+    explodeMore(10);
+
 }
 
 function message(text, color, fontSize) {
@@ -547,13 +511,25 @@ function explode(start, finish, size) {
 
     setTimeout(function () {
         gameArea.removeChild(explosion);
-    }, 5000);
+    }, 2000);
+}
 
+function explodeMore(repeat) {
+    for (i = 0; i < repeat; i++) {
+        var value1 = Math.floor(Math.random() * 70);
+        var percent1 = value1 + '%';
+        var value2 = Math.floor(Math.random() * 60);
+        var percent2 = value2 + '%';
+        var value3 = Math.floor(Math.random() * 30);
+        var em = value3 + 'em';
+
+        explode(percent1, percent2, em);
+    }
 }
 
 function resetScores() {
     localStorage.removeItem('topScores');
     topScores = [];
-
+    //localStorage.setItem('topScores', JSON.stringify(topScores));
     displayScore();
 }
