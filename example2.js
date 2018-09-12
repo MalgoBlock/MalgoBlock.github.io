@@ -10,6 +10,9 @@ function readyGo() {
     var menu = document.getElementById('menuOrdering');
     menu.style.fontWeight = 'bold';
 
+    var footer = document.getElementById('footerText');
+    footer.innerHTML = 'by Malgo Block - August 2018';
+
     createCakeTable();
     var clearOrder = document.getElementById('clearOrder');
     clearOrder.addEventListener('click', onPressClear);
