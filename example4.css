@@ -1,12 +1,16 @@
 ﻿#mainText {
     background-color: lightgrey;
     font-family: Courier New, Courier, monospace;
+    border: 1px solid black;
 }
 
 #gameArea {
     position: relative;
     max-width: 1600px;
     min-width: 850px;
+    background-image: url('images/background-blank-blue-132204.jpg');
+    border: 5px double black;
+    margin: 5px;
 }
 
 #topPanel {
@@ -15,13 +19,8 @@
     background-color: dimgrey;
 }
 
-.instructions i {
-    font-size: 1.1em;
-    padding-left: 10px;
-}
-
 .instructions {
-    background-color: forestgreen;
+    background-color: cadetblue;
     color: white;
     font-size: 1em;
     width: 100%;
@@ -49,7 +48,10 @@
 @media screen and (min-width: 1300px) {
     #message {
         animation: move 3s linear 1s infinite alternate;
-        
+    }
+
+    #gameArea {
+        margin: 30px;
     }
 }
 
@@ -67,10 +69,9 @@
 #timer {
     display: inline-block;
     font-size: 2em;
-    color: forestgreen;
-    
+    color: cadetblue;
     transition-property: color;
-    transition-duration: 10s;
+    transition-duration: 20s;
 }
 
 .button {
@@ -78,7 +79,7 @@
     padding: 10px;
     border-radius: 10px;
     background-color: white;
-    color: forestgreen;
+    color: cadetblue;
     font-weight: bold;
 }
 
@@ -86,9 +87,10 @@
     margin: 20px;
     width: 350px;
     height: 250px;
+    border: 4px groove dimgrey;
     border-radius: 10px;
     display: inline-block;
-    background-color: darkred;
+    background-color: #D00000;
     position: relative;
     transition-property: background-color;
     transition-duration: 2s;
@@ -100,6 +102,8 @@
     height: 200px;
     background-color: darkgrey;
     display: inline-block;
+    border: 1px solid black;
+    box-sizing: border-box;
 }
 
 @supports (grid-area: auto) {
@@ -173,7 +177,7 @@
     position: absolute;
     top: 100px;
     left: 150px;
-    background-color: darkred;
+    background-color: #D00000;
     font-size: 2.5em;
 }
 
@@ -183,9 +187,10 @@
 }
 
 .clue {
-    width: 200px;
+    width: 150px;
     height: 0px;
     background-color: palegoldenrod;
+    border: none;
     position: absolute;
     top: 225px;
     left: 25px;

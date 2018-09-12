@@ -132,7 +132,8 @@ function displayClue(event) {
     var clueTextId = 'clueText' + number;
     var text = document.getElementById(clueTextId);
     
-    clue.style.height = '25px';
+    clue.style.height = '21px';
+    clue.style.border = '1px solid black';
 
     setTimeout(function () {
         text.hidden = false;
@@ -185,7 +186,7 @@ function countdown() {
                 blowUp('Time is up!!!');
                 clearInterval(countdownId);
                 tickingSound.pause();
-                text.style.color = 'forestgreen';
+                text.style.color = 'cadetblue';
             }
         }
     }
@@ -208,7 +209,7 @@ function armBomb(id) {
     if (id == currentBomb) {
         var lockId = 'lock' + id;
         var lock = document.getElementById(lockId);
-        lock.style.backgroundColor = 'green';
+        lock.style.backgroundColor = 'cadetblue';
 
         var lockIconId = 'lockIcon' + id;
         var lockIcon = document.getElementById(lockIconId);
@@ -368,7 +369,7 @@ function snapWire(event) {
 
     if (resultId == correctWires[countClues] || difficulty == 1) {
         wire.style.height = '15px';
-        wire.style.backgroundColor = 'forestgreen';
+        wire.style.backgroundColor = 'cadetblue';
 
         var currentWrapperId = 'wrapper' + currentBomb;
         var currentWrapper = document.getElementById(currentWrapperId);
@@ -381,7 +382,7 @@ function snapWire(event) {
 
             var arrow1Id = 'arrow' + currentBomb + countClues;
             var arrow1 = document.getElementById(arrow1Id);
-            arrow1.style.color = 'forestgreen';
+            arrow1.style.color = 'green';
             arrow1.removeEventListener('click', displayClue);
 
             countClues += 1;
@@ -395,7 +396,7 @@ function snapWire(event) {
         }
 
         if (correctWires.length == countClues || difficulty == 1) {
-            currentWrapper.style.backgroundColor = 'forestgreen';
+            currentWrapper.style.backgroundColor = 'cadetblue';
             nextBomb();
         }
     } else {
@@ -409,7 +410,7 @@ function nextBomb() {
 
     if (currentBomb == 3) {
         getScore();
-        message('Congratulations! You have won! Your score is ' + currentScore, 'forestgreen', '2em');
+        message('Congratulations! You have won! Your score is ' + currentScore, 'cadetblue', '2em');
         clearInterval(countdownId);
         tickingSound.pause();
     } else {
