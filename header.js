@@ -6,9 +6,15 @@ function onLoadHeader() {
     var h1 = document.createElement('h1');
     var container = document.getElementById('container')
     var body = document.getElementById('body');
+    var span1 = document.createElement('span');
+    span1.className = 'heading-main';
+    var span2 = document.createElement('span');
+    span2.className = 'heading-sub';
+    span1.innerHTML = 'Malgo Block ';
+    span2.innerHTML = '- programming journey';
+    h1.appendChild(span1);
+    h1.appendChild(span2);
 
-    h1.innerHTML = "MB Demo website";
-   
     container.insertBefore(header, body);
     header.appendChild(h1);
 

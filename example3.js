@@ -7,9 +7,6 @@ var inactiveRowColor = 'grey';
 var activeSolution = [];
 
 function readyGo() {
-    var menu = document.getElementById('menuMastermind');
-    menu.style.fontWeight = 'bold';
-
     var footer = document.getElementById('footerText');
     footer.innerHTML = 'by Malgo Block - August 2018';
 

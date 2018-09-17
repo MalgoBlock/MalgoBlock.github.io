@@ -7,9 +7,6 @@ var cakeAlert = 'The maximum order of any type of cake is 96 pieces or 16 whole 
 
 function readyGo() {
 
-    var menu = document.getElementById('menuOrdering');
-    menu.style.fontWeight = 'bold';
-
     var footer = document.getElementById('footerText');
     footer.innerHTML = 'by Malgo Block - August 2018';
 

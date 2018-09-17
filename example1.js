@@ -5,9 +5,6 @@ function readyGo() {
     var footer = document.getElementById('footerText');
     footer.innerHTML = 'by Malgo Block - July 2018';
 
-    var menu = document.getElementById('menuBooking');
-    menu.style.fontWeight = 'bold';
-
     var submit = document.getElementById('submit');
     submit.addEventListener('click', onPress);
 

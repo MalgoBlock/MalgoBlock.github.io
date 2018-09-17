@@ -1,0 +1,98 @@
+﻿#gridContainer {
+    margin: 10px;
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
+    overflow: auto;
+}
+
+#cakeWrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#cakeSelector {
+    background-color: #AF8DE3;
+    width: 33%;
+}
+
+#cakeDisplay {
+    background-color: floralwhite;
+    width: 33%;
+}
+
+#cakeOrder {
+    background-color: #AF8DE3;
+    width: 33%;
+}
+
+
+@supports (grid-area: auto) {
+
+    #gridContainer {
+        display: grid;
+        grid-template-rows: 100px 1fr;
+        height: auto;
+    }
+
+    #cakeWrapper {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        height: auto;
+    }
+
+    #cakeSelector {
+        width: 100%;
+    }
+
+    #cakeDisplay {
+        width: auto;
+    }
+
+    #cakeOrder {
+        width: auto;
+    }
+}
+
+#clearOrder {
+    margin: 10px 20px;
+    padding: 5px;
+}
+
+#cakeText {
+    background-color: #733FBF;
+    color: #AF8DE3;
+}
+
+.cake {
+    color: #AF8DE3;
+}
+
+#cakeList {
+    margin-left: 10px;
+    border: 5px double rebeccapurple;
+}
+
+.cakeList {
+    width: auto;
+    border: hidden;
+    padding: 5px;
+}
+
+.cakeList input {
+    width: 75px;
+}
+
+.cakeQuantity {
+    font-weight: 400;
+    width: unset;
+    border: hidden;
+    padding: 5px;
+}
+
+/* Palette URL: http://paletton.com/#uid=10u0u0kr+tLhoC8mpvkuqnZzhiX */
+/* Palette URL: http://paletton.com/#uid=30V0I0kntBVdnQ0iVIDsxxovGqj */

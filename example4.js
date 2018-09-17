@@ -530,6 +530,5 @@ function explodeMore(repeat) {
 function resetScores() {
     localStorage.removeItem('topScores');
     topScores = [];
-    //localStorage.setItem('topScores', JSON.stringify(topScores));
     displayScore();
 }
