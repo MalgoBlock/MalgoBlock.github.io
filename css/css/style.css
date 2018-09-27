@@ -1,0 +1,84 @@
+﻿*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+    position: relative;
+}
+
+body {
+    height: 100%;
+    padding: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100%;
+}
+
+.body {
+    min-height: 80%; 
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex; 
+}
+
+.body:after {
+    content: "";
+    display: block;
+}
+
+h1 {
+    font-weight: 400;
+    color: #fff;
+}
+
+h2 {
+    font-weight: 400;
+    color: rgb(5, 102, 21);
+}
+
+@media screen and (max-width: 999px) {
+
+    h1 {
+        font-size: 4rem;
+        padding: 2rem;
+    }
+
+    #mainText {
+        position: relative;
+    }
+
+    a {
+        font-size: 3rem;
+    }
+}
+
+.body:after, footer {
+    height: 4rem;
+}
+
+footer {
+    color: #fff;
+    background-image: linear-gradient(
+        to right, 
+        rgb(5, 102, 21),
+        rgb(5, 102, 21),
+        rgb(255, 255, 255),
+        rgb(255, 255, 255));
+    padding-top: 1rem;
+
+    width: 100%;
+}
+
+footer p {
+    margin-left: 2rem;
+}
