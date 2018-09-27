@@ -1,0 +1,383 @@
+body {
+    overflow: hidden;
+}
+
+.sky {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    text-align: center;
+    animation-name: sky;
+    animation-duration: 40s;
+    animation-iteration-count: infinite;
+    transition: all 5s;
+}
+
+.blur {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20vh;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, .15), rgba(255, 255, 255, .001));
+    z-index: 10;
+}
+
+.sun {
+    margin-top: 1rem;
+    width: 6.4rem;
+    height: 6.4rem;
+    font-size: 6rem;
+    position: absolute;
+    transform-origin: 50% 50vh;
+    animation-name: sunpath;
+    animation-duration: 40s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    transition: all 5s;
+}
+
+.moon {
+    margin-top: 8rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 4rem;
+    position: absolute;
+    transform-origin: 30% 50vh;
+    animation-name: moonpath;
+    animation-duration: 40s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    transition: all 5s;
+}
+
+.cloud {
+    margin-top: 1vh;
+    position: absolute;
+    animation-name: cloud-slide;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    transition: all .5s;
+}
+
+.cloud--1 {
+    font-size: 7rem;
+    animation-timing-function: ease-in;
+}
+
+.cloud--2 {
+    font-size: 6rem;
+    animation-timing-function: ease-out;
+    transform: translate(5rem, 12vh);
+}
+
+.cloud--3 {
+    font-size: 5rem;
+    animation-timing-function: ease;
+    transform: translate(2rem, 8vh);  
+}
+
+.rain {
+    position: relative;
+    float: left;
+    margin-top: 15vh;
+    animation-name: rain;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    transition: all .5s;
+}
+
+.rain-cloud {
+    font-size: 9rem;
+    position: absolute;
+    animation-name: cloud-rain;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    transition: all .5s;
+ }
+
+.drop {
+    margin-top: 4rem;
+    float: left;
+    font-size: 2rem;
+    animation-name: drop-rain;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    transition: all .5s;
+}
+
+.drop--1 {
+    transform: translate(4rem, .5rem);
+    animation-timing-function: ease;
+}
+
+.drop--2 {
+    transform: translate(4.5rem, -1rem);
+    animation-timing-function: ease-in;
+}
+
+.drop--3 {
+    transform: translate(4.7rem, .3rem);
+    animation-timing-function: ease-out;
+}
+
+.star {
+    height: .3rem;
+    width: .3rem;
+    background-color: transparent;
+    position: absolute;
+    border-radius: 100px;
+    animation-name: stars;
+    animation-duration: 40s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    transition: all 5s;
+}
+
+.star--1 {
+    top: 5rem;
+    left: 50vw;
+}
+
+.star--2 {
+    top: 10rem;
+    left: 75vw;
+}
+
+.star--3 {
+    top: 7rem;
+    left: 25vw;
+}
+
+.star--4 {
+    top: 15rem;
+    left: 45vw;
+}
+
+.star--5 {
+    top: 20rem;
+    left: 85vw;
+}
+
+.sky-text {
+    display: block;
+    color: rgb(8, 35, 100);
+    margin-top: 3rem;
+}
+
+@keyframes sunpath {
+    0% {
+        transform: rotate(-85deg);
+        color: rgb(255,200,105);
+        background-image: radial-gradient(circle, rgba(255,200,155,1), rgba(255,255,255,0) 67%);
+    }
+
+    45% {
+        transform: rotate(77deg);
+        color: rgb(255,164,  8);
+        background-image: radial-gradient(circle, rgba(255,164,80,1), rgba(255,255,255,0) 67%);
+    }
+
+    50% {
+        transform: rotate(80deg);
+        color: rgb(255, 66, 8);
+        background-image: radial-gradient(circle, rgba(255, 66, 80,1), rgba(255,255,255,0) 67%);
+    }
+
+    55% {
+        transform: rotate(90deg);
+        color: transparent;
+        background-image: none;
+    }
+
+    90% {
+        transform: rotate(272deg);
+        color:transparent;
+        background-image: none;
+    }
+
+    100% {
+        transform: rotate(275deg);
+        color:rgb(255,200,105);
+        background-image: radial-gradient(circle, rgba(255,200,155,1), rgba(255,255,255,0) 67%);
+    }
+}
+
+@keyframes moonpath {
+    0% {
+        transform: rotate(-95deg);
+        color: transparent;
+        background-image: none;
+    }
+
+    30% {
+        transform: rotate(-95deg);
+        color: transparent;
+        background-image: none;
+    }
+
+    35% {
+        transform: rotate(-90deg);
+        color:#fff;
+        background-image: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0) 67%);
+    }
+
+    90% {
+        transform: rotate(85deg);
+        color:#fff;
+        background-image: radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0) 67%);
+    }
+
+    100% {
+        transform: rotate(90deg);
+        color: transparent;
+        background-image: none;
+    }
+}
+
+
+@keyframes sky {
+    0% {
+        background-color: rgb(115,154,243);
+    }
+
+    25% {
+        background-color: rgb(32, 130, 242);
+    }
+
+    50% {
+        background-color: rgb( 32, 96,242);
+    }
+
+    75% {
+        background-color: rgb(8, 35, 100);
+    }
+
+    85% {
+        background-color: rgb(17, 27, 51);
+    }
+
+    100% {
+        background-color: rgb(115,154,243);
+    }
+}
+
+@keyframes stars {
+    50% {
+        background-color: rgb( 32, 96,242);
+    }
+
+    75% {
+        background-color: #fff;
+    }
+
+    100% {
+        background-color: rgb(115,154,243);
+    }
+}
+
+@keyframes cloud-slide {
+    0% {
+        left: 18vw;
+        color:transparent;
+    }
+
+    10% {
+        left: 20vw;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    50% {
+        left: 60vw;
+        color: rgba(119, 119, 119, 0.8);
+    }
+
+    60% {
+        left: 80vw;
+        color: transparent;
+    }
+
+    100% {
+        left: 90vw;
+        color: transparent;
+    }
+}
+
+@keyframes rain {
+    0% {
+        left: 5vw;
+        transform: scale(1);
+    }
+
+    5% {
+        left: 10vw;
+        transform: scale(1);
+    }
+
+    30% {
+        left: 60vw;
+        transform: scale(.9);
+    }
+
+    50% {
+        left: 85vw;
+        transform: scale(.4);
+    }
+
+    100% {
+        left: 90vw;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes cloud-rain {
+    0% {
+        color:transparent;
+    }
+
+    5% {
+        color: rgba(64, 64, 64, 0.8);
+    }
+
+    40% {
+        color: rgba(153, 153, 153, 0.8);
+    }
+
+    50% {
+        color: rgba(153, 153, 153, 0.3);
+    }
+
+    60% {
+        color: transparent;
+    }
+
+    100% {
+        color: transparent;
+    }
+}
+
+@keyframes drop-rain {
+    0% {    
+        color:transparent;   
+    }
+
+    5% {   
+        color: rgb(37, 49, 160);    
+    }
+
+    20% {   
+        margin-top: 4.5rem;
+        color: rgb(37, 49, 160);    
+    }
+
+    40% {
+        margin-top: 20rem;
+        color: transparent;
+    }
+
+    100% { 
+        color: transparent; 
+    }
+}
+

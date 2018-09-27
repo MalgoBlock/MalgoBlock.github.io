@@ -44,9 +44,15 @@ function onLoadHeader() {
     example4.id = 'menuBomb';
     example4.href = "./example4.html";
 
+    var example5 = document.createElement('a')
+    example5.innerHTML = 'CSS Animation';
+    example5.id = 'animation';
+    example5.href = "./example5.html";
+
     header.appendChild(main);
     header.appendChild(example1);
     header.appendChild(example2);
     header.appendChild(example3);
     header.appendChild(example4);
+    header.appendChild(example5);
 }
