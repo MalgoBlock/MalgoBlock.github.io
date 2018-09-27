@@ -1,18 +1,23 @@
-﻿* {
+﻿*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 html {
+    font-size: 62.5%;
     height: 100%;
     position: relative;
 }
 
 body {
     height: 100%;
-    padding: 20px;
+    padding: 2rem;
     font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 .container {
@@ -22,7 +27,7 @@ body {
 .body {
     min-height: 80%; 
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     display: flex; 
 }
 
@@ -44,8 +49,8 @@ h2 {
 @media screen and (max-width: 999px) {
 
     h1 {
-        font-size: 40px;
-        padding: 20px;
+        font-size: 4rem;
+        padding: 2rem;
     }
 
     #mainText {
@@ -53,12 +58,12 @@ h2 {
     }
 
     a {
-        font-size: 30px;
+        font-size: 3rem;
     }
 }
 
 .body:after, footer {
-    height: 40px;
+    height: 4rem;
 }
 
 footer {
@@ -69,11 +74,11 @@ footer {
         rgb(5, 102, 21),
         rgb(255, 255, 255),
         rgb(255, 255, 255));
-    padding-top: 10px;
+    padding-top: 1rem;
 
     width: 100%;
 }
 
 footer p {
-    margin-left: 20px;
+    margin-left: 2rem;
 }
