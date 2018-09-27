@@ -13,6 +13,7 @@ function onLoadSidebar() {
     var body = document.getElementById('body')
 
     p.innerHTML = tech[i];
+    p.id = 'tech' + i;
     sidebar.appendChild(p);
     }
 
