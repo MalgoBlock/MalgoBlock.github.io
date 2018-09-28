@@ -251,7 +251,7 @@ function armBomb(id) {
     //create arrows
     for (m = 0; m < 3; m++) {
         var newArrow = createNewElement('div', 'arrow' + id + m, 'arrow');
-        var newI = createNewElement('i', 'arrow' + m, 'fas fa-caret-down');
+        var newI = createNewElement('i', 'arrow' + m, 'fas fa-caret-down arrow-single');
         newArrow.appendChild(newI);
         newBomb.appendChild(newArrow);
     }
@@ -486,7 +486,7 @@ function message(text, color, fontSize) {
     var message = document.getElementById('message');
     message.innerHTML = text;
     message.style.color = color;
-    message.style.fontSize = fontSize;
+   // message.style.fontSize = fontSize; - not good for responsive design...
 }
 
 function explode(start, finish, size) {
