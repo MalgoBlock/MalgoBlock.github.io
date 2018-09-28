@@ -12,18 +12,14 @@
 
 #gameArea {
     position: relative;
-    max-width: 1600px;
-    min-width: 850px;
-   
     overflow: hidden;
     background-color: cadetblue;
     border: 5px double black;
-    margin: 5px;
+    
 }
 
 #topPanel {
     width: 100%;
-    height: 100px;
     background-color: dimgrey;
 }
 
@@ -47,7 +43,6 @@
 #message {
     display: inline-block;
     color: white;
-    font-size: 1.4em;
     transition-property: font-size;
     transition-duration: 2s;
     animation: none;
@@ -68,6 +63,48 @@
     #topPanel {
         height: 150px;
     }
+
+    .wrapper {
+        transform: scale(.85) translate(-4rem, -4rem);
+    }
+}
+
+@media only screen and (max-width: 799px) {
+
+    #message {
+        font-size: 1.2rem; 
+    }
+
+    #topPanel {
+        height: 100px;
+    }
+
+    .button {
+        margin: 10px;
+        padding: 5px;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    #gameArea {
+        max-width: 1600px;
+        min-width: 850px;
+        margin: 5px;
+    }
+
+    #message {
+        font-size: 1.4em; 
+    }
+
+    #topPanel {
+        height: 100px;
+    }
+
+    .button {
+        margin: 30px;
+        padding: 10px;
+    }
 }
 
 @keyframes move {
@@ -84,8 +121,7 @@
 }
 
 .button {
-    margin: 30px;
-    padding: 10px;
+    font-family: inherit;
     border-radius: 10px;
     background-color: white;
     color: cadetblue;
@@ -153,7 +189,12 @@
     font-size: 2em;
     color: lightgrey;
     margin-left: 15px;
+    margin-bottom: 10px;
     float: left;
+}
+
+.arrow-single {
+    transform: translateY(-5px);
 }
 
 .door {
@@ -171,11 +212,11 @@
 
 
 .doorLeft {
-    left: 25px;
+    left: 24px;
 }
 
 .doorRight {
-    right: 25px;
+    right: 18px;
 }
 
 .lock {
@@ -210,6 +251,7 @@
 .clue p {
     padding: 2px;
     margin-left: 10px;
+    font-size: 12px;
 }
 
 .explosion {

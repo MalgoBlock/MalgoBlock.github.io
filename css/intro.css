@@ -1,6 +1,6 @@
 ﻿header {
     height: 35vh;
-    min-height: 200px;
+    min-height: 20rem;
     background-image: linear-gradient(
         to right, 
         rgba(98, 161, 125, 0.7),
@@ -14,28 +14,28 @@
 @media screen and (min-width: 1000px) {
 
     h1 {
-        font-size: 30px;
-        padding: 30px;
+        font-size: 3rem;
+        padding: 3rem;
     }
 }
 
 @media screen and (max-width: 999px) {
     header {
-        min-width: 1000px;
+        min-width: 100rem;
     }
 }
 
 a:link,
 a:visited {
-    margin: 0px 15px;
-    padding: 5px 15px;
+    margin: 2rem 1.5rem;
+    padding: .5rem 1.5rem;
     float: left;
     color: #fff;
     background-color: rgba(5, 102, 21, 0.7);
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid #fff;
-    border-radius: 100px;
+    border: .1rem solid #fff;
+    border-radius: 10rem;
     transition: all 1s;
     animation: appear 2s 4s;
     animation-fill-mode: backwards;
@@ -82,23 +82,23 @@ h1 {
 @keyframes slideIn {
     0% {
         opacity: 0;
-        margin-left: 200px;
+        margin-left: 20rem;
     }
 
     100% {
         opacity: 1;
-        margin-left: 0px;
+        margin-left: 0;
     }
 }
 
 #body {
-    margin: 20px;
+    margin: 2rem;
     height: 50vh;
-    padding-bottom: 60px;
+    padding-bottom: 6rem;
     overflow-y: auto;
 }
 
 .text {
-    letter-spacing: 1px;
-    max-width: 800px;
+    letter-spacing: .1rem;
+    max-width: 80rem;
 }

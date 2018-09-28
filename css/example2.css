@@ -8,26 +8,45 @@
 
 #cakeWrapper {
     margin-top: 10px;
-    display: flex;
-    flex-direction: row;
     height: 100%;
 }
 
 #cakeSelector {
     background-color: #AF8DE3;
-    width: 33%;
 }
 
 #cakeDisplay {
     background-color: floralwhite;
-    width: 33%;
 }
 
 #cakeOrder {
     background-color: #AF8DE3;
-    width: 33%;
 }
 
+@media only screen and (max-width: 799px) {
+    td, th {
+        font-size: 1rem;
+    }
+
+}
+
+@media only screen and (min-width: 800px) {
+    #cakeWrapper {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    #cakeSelector {
+        width: 33%;
+    }
+    
+    #cakeDisplay {
+        width: 33%;
+    }
+    
+    #cakeOrder {
+        width: 33%;
+    }
 
 @supports (grid-area: auto) {
 
@@ -56,6 +75,7 @@
     #cakeOrder {
         width: auto;
     }
+}
 }
 
 #clearOrder {

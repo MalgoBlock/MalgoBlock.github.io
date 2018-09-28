@@ -1,6 +1,4 @@
-﻿*,
-*::after,
-*::before {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
@@ -14,7 +12,6 @@ html {
 
 body {
     height: 100%;
-    padding: 2rem;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     box-sizing: border-box;
@@ -25,7 +22,6 @@ body {
 }
 
 .body {
-    min-height: 80%; 
     width: 100%;
     margin-bottom: 2rem;
     display: flex; 
@@ -46,26 +42,82 @@ h2 {
     color: rgb(5, 102, 21);
 }
 
-@media screen and (max-width: 999px) {
+@media only screen and (max-width: 799px) {
+
+    .body {
+        min-height: 70%; 
+    }
+
+    body {
+        padding: .5rem;
+    }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.6rem;
         padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+        padding: .5rem;
     }
 
     #mainText {
         position: relative;
     }
 
+    .mainText {
+        padding-left: 0;
+    }
+
     a {
+        font-size: 1.3rem;
+        margin: .4rem;
+    }
+
+    .sidebar {
+        flex: 0 0 2rem;
+    }
+
+    .sidebar p {
+        width: 1.5rem;
         font-size: 1rem;
-        margin: .5rem;
+        letter-spacing: .5rem;
+        margin-bottom: 4rem;
+    }
+
+    footer {
+        padding-top: .5rem;
+    }
+
+    footer p {
+        font-size: 1.1rem;
+    }
+
+    .body::after, footer {
+        height: 2.5rem;
     }
 }
 
-.body:after, footer {
-    height: 4rem;
+@media only screen and (min-width: 800px) {
+    .body {
+        min-height: 80%;
+    }
+
+    footer {
+        padding-top: 1rem;
+    }
+
+    .body::after, footer {
+        height: 4rem;
+    }
 }
+
+
 
 footer {
     color: #fff;
@@ -75,8 +127,6 @@ footer {
         rgb(5, 102, 21),
         rgb(255, 255, 255),
         rgb(255, 255, 255));
-    padding-top: 1rem;
-
     width: 100%;
 }
 
