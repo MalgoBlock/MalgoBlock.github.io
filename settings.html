@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Malgo Block - settings</title>
+        <script src="demo2-utilities.js"></script>
+        <script src="demo2-script2.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
+        <link rel="stylesheet" href="css/style-purple.css" id="color-link">
+        <link rel="shortcut icon" href="image/favicon.png">
+       
+        
+    </head>
+    <body class="body">
+        
+        <div class="body-wrap horizontal" id="background">
+            <header>
+                <h1 class="heading-primary">Malgo Block - programming journey</h1>
+            </header>
+
+            <nav class="menu">
+                <input type="checkbox" class="menu__checkbox" id="menu-toggle">
+                <label for="menu-toggle" class="menu__button">
+                    <svg class="menu__icon menu__icon--visible">
+                        <use xlink:href="image/sprite.svg#icon-menu"></use>
+                    </svg>
+                    <svg class="menu__icon menu__icon--invisible">
+                        <use xlink:href="image/sprite.svg#icon-x"></use>
+                    </svg>
+                </label>
+                <a href="/index.html" class="menu__item menu__item--1" title="Home">
+                    <svg class="menu__icon">
+                        <use xlink:href="image/sprite.svg#icon-home"></use>
+                    </svg>
+                </a>
+                <a href="#" class="menu__item menu__item--2" title="User">
+                    <svg class="menu__icon">
+                         <use xlink:href="image/sprite.svg#icon-user"></use>
+                    </svg>
+                </a>
+                <a href="/settings.html" class="menu__item menu__item--3" title="Settings">
+                    <svg class="menu__icon">
+                        <use xlink:href="image/sprite.svg#icon-settings"></use>
+                    </svg>
+                </a> 
+            </nav>
+    
+            <main>
+                <div class="settings">
+                    <div class="settings__box">
+                        <div class="settings__title">Background pattern</div>
+
+                        <div class="radio-selector__radio-group radio-selector__radio-group--vertical">
+                            <input type="radio" class="radio-selector__radio-input" id="radio-horizontal" name="background-direction" checked>
+                            <label for="radio-horizontal" class="radio-selector__radio-label">
+                                <span class="radio-selector__radio-button radio-selector__radio-button--vertical"></span>
+                                Horizontal</label>
+                        </div>
+                        <div class="radio-selector__radio-group radio-selector__radio-group--vertical">
+                            <input type="radio" class="radio-selector__radio-input" id="radio-vertical" name="background-direction">
+                            <label for="radio-vertical" class="radio-selector__radio-label">
+                                <span class="radio-selector__radio-button radio-selector__radio-button--vertical"></span>
+                                Vertical</label>
+                        </div>
+
+                    </div>
+                    <div class="settings__box">
+                        <div class="settings__title">Color scheme</div>
+                        <select name="colors" id="colors" class="settings__drop-down">
+                            <option value="purple" selected>purple</option>
+                            <option value="green">green</option>
+                        </select>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

@@ -49,10 +49,16 @@ function onLoadHeader() {
     example5.id = 'animation';
     example5.href = "./example5.html";
 
+    var demo2 = document.createElement('a')
+    demo2.innerHTML = 'DEMO2 - CSS';
+    demo2.id = 'demo2';
+    demo2.href = "./demo2-index.html";
+
     header.appendChild(main);
     header.appendChild(example1);
     header.appendChild(example2);
     header.appendChild(example3);
     header.appendChild(example4);
     header.appendChild(example5);
+    header.appendChild(demo2);
 }
