@@ -66,6 +66,18 @@ a:hover {
     color:rgb(255, 255, 255);
 }
 
+#demo2:link,
+#demo2:visited {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: rgb(185, 1, 191);
+    border: .1rem solid rgb(185, 1, 191);
+}
+
+#demo2:hover {
+    background-color: rgba(184, 2, 190, 0.7);
+    color: #fff;
+}
+
 .mainText {
     padding-top: 1rem;
     flex-grow: 1;
